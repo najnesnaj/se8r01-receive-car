@@ -561,13 +561,16 @@ AFR1 Alternate function remapping option 1
 	TIM2_CCER2 |=0x03;//  Channel 3 enable, active low output configuration
 
 	TIM2_PSCR =0X04;// 16 Mhz/2^4 =  1Mhz  -- the prescaler is a 4 bit number!
-	TIM2_ARRH =62500/256; // auto reload register
-	TIM2_ARRL =62500%256; // 1000 Khz/62500 is 16 events per second (blink a led)
+
+//servo needs to vary between 1 ms and 2 ms  (5 and 10 / duty cycle 50hz)
+
+	TIM2_ARRH =20000/256; // auto reload register
+	TIM2_ARRL =20000%256; // 1000 Khz/20000 is 50 events per second 
 	// compare register initialization   duty cycle = 50%
 	//
 	// if decreased, duty cycle deminishes -- so from 0 to CCR3 is high, rest is low
-	TIM2_CCR3H =31250/256; //compare capture register value
-	TIM2_CCR3L =31250%256;
+	TIM2_CCR3H =1000/256; //compare capture register value
+	TIM2_CCR3L =1000%256;
 
 
 	//	Start counting / update interrupt disabled;
@@ -605,15 +608,26 @@ int main () {
 	UARTPrintF("status = \n\r");
 	print_UCHAR_hex(readstatus);
 
+//pwm op pin PA3 onderste van J2 connector TIM2_CH3
+
 	Init_Tim2 (); //pwm for led on pd2
-	PD_DDR |= (1<<2);
-	PD_CR1 |= (1<<2);
-	PD_CR2 &= 0xFD;
+	PA_DDR |= (1<<3);
+	PA_CR1 |= (1<<3);
+	PA_CR2 &= 0xFD;
 	SE8R01_Init();
 	UARTPrintF("timer initialised = \n\r");
 
 
 	while (1) {
+//change duty cycle to change servo
+   TIM2_CCR3H =1000/256; //compare capture register value
+           TIM2_CCR3L =1000%256;
+			delay(1000);
+
+   TIM2_CCR3H =2000/256; //compare capture register value
+           TIM2_CCR3L =2000%256;
+			delay(1000);
+
 
 		if ((PD_IDR & (1 << 3))==0) //input low
 

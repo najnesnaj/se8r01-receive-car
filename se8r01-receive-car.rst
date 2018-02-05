@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.4.0 #8981 (Jul 11 2014) (Linux)
-                                      4 ; This file was generated Mon Feb  5 14:29:43 2018
+                                      4 ; This file was generated Mon Feb  5 15:53:50 2018
                                       5 ;--------------------------------------------------------
                                       6 	.module se8r01_receive_car
                                       7 	.optsdcc -mstm8
@@ -165,7 +165,7 @@
       00808F AE 00 5E         [ 2]  165 	ldw	x, #l_INITIALIZER
       008092 27 09            [ 1]  166 	jreq	00004$
       008094                        167 00003$:
-      008094 D6 8A 40         [ 1]  168 	ld	a, (s_INITIALIZER - 1, x)
+      008094 D6 8A 6A         [ 1]  168 	ld	a, (s_INITIALIZER - 1, x)
       008097 D7 00 0F         [ 1]  169 	ld	(s_INITIALIZED - 1, x), a
       00809A 5A               [ 2]  170 	decw	x
       00809B 26 F7            [ 1]  171 	jrne	00003$
@@ -524,7 +524,7 @@
       008237 89               [ 2]  524 	pushw	x
       008238 4B 0C            [ 1]  525 	push	#0x0c
       00823A 4B 04            [ 1]  526 	push	#0x04
-      00823C CD 89 CC         [ 4]  527 	call	__mulint
+      00823C CD 89 F6         [ 4]  527 	call	__mulint
       00823F 5B 04            [ 2]  528 	addw	sp, #4
       008241 1F 09            [ 2]  529 	ldw	(0x09, sp), x
       008243                        530 00103$:
@@ -1553,35 +1553,35 @@
       0087D9 AE 53 0E         [ 2] 1553 	ldw	x, #0x530e
       0087DC A6 04            [ 1] 1554 	ld	a, #0x04
       0087DE F7               [ 1] 1555 	ld	(x), a
-                                   1556 ;	se8r01-receive-car.c: 564: TIM2_ARRH =62500/256; // auto reload register
+                                   1556 ;	se8r01-receive-car.c: 567: TIM2_ARRH =20000/256; // auto reload register
       0087DF AE 53 0F         [ 2] 1557 	ldw	x, #0x530f
-      0087E2 A6 F4            [ 1] 1558 	ld	a, #0xf4
+      0087E2 A6 4E            [ 1] 1558 	ld	a, #0x4e
       0087E4 F7               [ 1] 1559 	ld	(x), a
-                                   1560 ;	se8r01-receive-car.c: 565: TIM2_ARRL =62500%256; // 1000 Khz/62500 is 16 events per second (blink a led)
+                                   1560 ;	se8r01-receive-car.c: 568: TIM2_ARRL =20000%256; // 1000 Khz/20000 is 50 events per second 
       0087E5 AE 53 10         [ 2] 1561 	ldw	x, #0x5310
-      0087E8 A6 24            [ 1] 1562 	ld	a, #0x24
+      0087E8 A6 20            [ 1] 1562 	ld	a, #0x20
       0087EA F7               [ 1] 1563 	ld	(x), a
-                                   1564 ;	se8r01-receive-car.c: 569: TIM2_CCR3H =31250/256; //compare capture register value
+                                   1564 ;	se8r01-receive-car.c: 572: TIM2_CCR3H =1000/256; //compare capture register value
       0087EB AE 53 15         [ 2] 1565 	ldw	x, #0x5315
-      0087EE A6 7A            [ 1] 1566 	ld	a, #0x7a
+      0087EE A6 03            [ 1] 1566 	ld	a, #0x03
       0087F0 F7               [ 1] 1567 	ld	(x), a
-                                   1568 ;	se8r01-receive-car.c: 570: TIM2_CCR3L =31250%256;
+                                   1568 ;	se8r01-receive-car.c: 573: TIM2_CCR3L =1000%256;
       0087F1 AE 53 16         [ 2] 1569 	ldw	x, #0x5316
-      0087F4 A6 12            [ 1] 1570 	ld	a, #0x12
+      0087F4 A6 E8            [ 1] 1570 	ld	a, #0xe8
       0087F6 F7               [ 1] 1571 	ld	(x), a
-                                   1572 ;	se8r01-receive-car.c: 574: TIM2_CR1 |=0x81;
+                                   1572 ;	se8r01-receive-car.c: 577: TIM2_CR1 |=0x81;
       0087F7 AE 53 00         [ 2] 1573 	ldw	x, #0x5300
       0087FA F6               [ 1] 1574 	ld	a, (x)
       0087FB AA 81            [ 1] 1575 	or	a, #0x81
       0087FD F7               [ 1] 1576 	ld	(x), a
       0087FE 81               [ 4] 1577 	ret
-                                   1578 ;	se8r01-receive-car.c: 581: int main () {
+                                   1578 ;	se8r01-receive-car.c: 584: int main () {
                                    1579 ;	-----------------------------------------
                                    1580 ;	 function main
                                    1581 ;	-----------------------------------------
       0087FF                       1582 _main:
       0087FF 52 33            [ 2] 1583 	sub	sp, #51
-                                   1584 ;	se8r01-receive-car.c: 583: UCHAR rx_addr_p1[]  = { 0xd2, 0xf0, 0xf0, 0xf0, 0xf0 };
+                                   1584 ;	se8r01-receive-car.c: 586: UCHAR rx_addr_p1[]  = { 0xd2, 0xf0, 0xf0, 0xf0, 0xf0 };
       008801 90 96            [ 1] 1585 	ldw	y, sp
       008803 72 A9 00 2D      [ 2] 1586 	addw	y, #45
       008807 A6 D2            [ 1] 1587 	ld	a, #0xd2
@@ -1601,7 +1601,7 @@
       00881B 93               [ 1] 1601 	ldw	x, y
       00881C A6 F0            [ 1] 1602 	ld	a, #0xf0
       00881E E7 04            [ 1] 1603 	ld	(0x0004, x), a
-                                   1604 ;	se8r01-receive-car.c: 584: UCHAR tx_addr[]     = { 0xe1, 0xf0, 0xf0, 0xf0, 0xf0 };
+                                   1604 ;	se8r01-receive-car.c: 587: UCHAR tx_addr[]     = { 0xe1, 0xf0, 0xf0, 0xf0, 0xf0 };
       008820 90 96            [ 1] 1605 	ldw	y, sp
       008822 72 A9 00 22      [ 2] 1606 	addw	y, #34
       008826 A6 E1            [ 1] 1607 	ld	a, #0xe1
@@ -1622,18 +1622,18 @@
       00883B 1C 00 04         [ 2] 1622 	addw	x, #0x0004
       00883E A6 F0            [ 1] 1623 	ld	a, #0xf0
       008840 F7               [ 1] 1624 	ld	(x), a
-                                   1625 ;	se8r01-receive-car.c: 589: InitializeSystemClock();
+                                   1625 ;	se8r01-receive-car.c: 592: InitializeSystemClock();
       008841 CD 81 E4         [ 4] 1626 	call	_InitializeSystemClock
-                                   1627 ;	se8r01-receive-car.c: 590: InitializeUART();
+                                   1627 ;	se8r01-receive-car.c: 593: InitializeUART();
       008844 CD 82 DC         [ 4] 1628 	call	_InitializeUART
-                                   1629 ;	se8r01-receive-car.c: 592: InitializeSPI ();
+                                   1629 ;	se8r01-receive-car.c: 595: InitializeSPI ();
       008847 CD 81 BC         [ 4] 1630 	call	_InitializeSPI
-                                   1631 ;	se8r01-receive-car.c: 594: UARTPrintF("start debug \n\r");
-      00884A AE 89 8B         [ 2] 1632 	ldw	x, #___str_0+0
+                                   1631 ;	se8r01-receive-car.c: 597: UARTPrintF("start debug \n\r");
+      00884A AE 89 B5         [ 2] 1632 	ldw	x, #___str_0+0
       00884D 89               [ 2] 1633 	pushw	x
       00884E CD 82 79         [ 4] 1634 	call	_UARTPrintF
       008851 5B 02            [ 2] 1635 	addw	sp, #2
-                                   1636 ;	se8r01-receive-car.c: 596: memset (tx_payload, 0, sizeof(tx_payload));
+                                   1636 ;	se8r01-receive-car.c: 599: memset (tx_payload, 0, sizeof(tx_payload));
       008853 96               [ 1] 1637 	ldw	x, sp
       008854 5C               [ 2] 1638 	incw	x
       008855 4B 21            [ 1] 1639 	push	#0x21
@@ -1641,334 +1641,360 @@
       008859 4B 00            [ 1] 1641 	push	#0x00
       00885B 4B 00            [ 1] 1642 	push	#0x00
       00885D 89               [ 2] 1643 	pushw	x
-      00885E CD 8A 22         [ 4] 1644 	call	_memset
+      00885E CD 8A 4C         [ 4] 1644 	call	_memset
       008861 5B 06            [ 2] 1645 	addw	sp, #6
-                                   1646 ;	se8r01-receive-car.c: 599: init_io();                        // Initialize IO port
+                                   1646 ;	se8r01-receive-car.c: 602: init_io();                        // Initialize IO port
       008863 CD 83 55         [ 4] 1647 	call	_init_io
-                                   1648 ;	se8r01-receive-car.c: 600: write_spi_reg(FLUSH_RX,0); // receive data 
+                                   1648 ;	se8r01-receive-car.c: 603: write_spi_reg(FLUSH_RX,0); // receive data 
       008866 4B 00            [ 1] 1649 	push	#0x00
       008868 4B E2            [ 1] 1650 	push	#0xe2
       00886A CD 80 CE         [ 4] 1651 	call	_write_spi_reg
       00886D 5B 02            [ 2] 1652 	addw	sp, #2
-                                   1653 ;	se8r01-receive-car.c: 601: readstatus = read_spi_reg(CONFIG);
+                                   1653 ;	se8r01-receive-car.c: 604: readstatus = read_spi_reg(CONFIG);
       00886F 4B 00            [ 1] 1654 	push	#0x00
       008871 CD 81 0A         [ 4] 1655 	call	_read_spi_reg
       008874 5B 01            [ 2] 1656 	addw	sp, #1
-                                   1657 ;	se8r01-receive-car.c: 602: UARTPrintF("config = \n\r");
-      008876 AE 89 9A         [ 2] 1658 	ldw	x, #___str_1+0
+                                   1657 ;	se8r01-receive-car.c: 605: UARTPrintF("config = \n\r");
+      008876 AE 89 C4         [ 2] 1658 	ldw	x, #___str_1+0
       008879 88               [ 1] 1659 	push	a
       00887A 89               [ 2] 1660 	pushw	x
       00887B CD 82 79         [ 4] 1661 	call	_UARTPrintF
       00887E 5B 02            [ 2] 1662 	addw	sp, #2
       008880 84               [ 1] 1663 	pop	a
-                                   1664 ;	se8r01-receive-car.c: 603: print_UCHAR_hex(readstatus);
+                                   1664 ;	se8r01-receive-car.c: 606: print_UCHAR_hex(readstatus);
       008881 88               [ 1] 1665 	push	a
       008882 CD 82 90         [ 4] 1666 	call	_print_UCHAR_hex
       008885 84               [ 1] 1667 	pop	a
-                                   1668 ;	se8r01-receive-car.c: 604: readstatus = read_spi_reg(STATUS);
+                                   1668 ;	se8r01-receive-car.c: 607: readstatus = read_spi_reg(STATUS);
       008886 4B 07            [ 1] 1669 	push	#0x07
       008888 CD 81 0A         [ 4] 1670 	call	_read_spi_reg
       00888B 5B 01            [ 2] 1671 	addw	sp, #1
-                                   1672 ;	se8r01-receive-car.c: 605: UARTPrintF("status = \n\r");
-      00888D AE 89 A6         [ 2] 1673 	ldw	x, #___str_2+0
+                                   1672 ;	se8r01-receive-car.c: 608: UARTPrintF("status = \n\r");
+      00888D AE 89 D0         [ 2] 1673 	ldw	x, #___str_2+0
       008890 88               [ 1] 1674 	push	a
       008891 89               [ 2] 1675 	pushw	x
       008892 CD 82 79         [ 4] 1676 	call	_UARTPrintF
       008895 5B 02            [ 2] 1677 	addw	sp, #2
       008897 84               [ 1] 1678 	pop	a
-                                   1679 ;	se8r01-receive-car.c: 606: print_UCHAR_hex(readstatus);
+                                   1679 ;	se8r01-receive-car.c: 609: print_UCHAR_hex(readstatus);
       008898 88               [ 1] 1680 	push	a
       008899 CD 82 90         [ 4] 1681 	call	_print_UCHAR_hex
       00889C 84               [ 1] 1682 	pop	a
-                                   1683 ;	se8r01-receive-car.c: 608: Init_Tim2 (); //pwm for led on pd2
+                                   1683 ;	se8r01-receive-car.c: 613: Init_Tim2 (); //pwm for led on pd2
       00889D CD 87 C4         [ 4] 1684 	call	_Init_Tim2
-                                   1685 ;	se8r01-receive-car.c: 609: PD_DDR |= (1<<2);
-      0088A0 AE 50 11         [ 2] 1686 	ldw	x, #0x5011
+                                   1685 ;	se8r01-receive-car.c: 614: PA_DDR |= (1<<3);
+      0088A0 AE 50 02         [ 2] 1686 	ldw	x, #0x5002
       0088A3 F6               [ 1] 1687 	ld	a, (x)
-      0088A4 AA 04            [ 1] 1688 	or	a, #0x04
+      0088A4 AA 08            [ 1] 1688 	or	a, #0x08
       0088A6 F7               [ 1] 1689 	ld	(x), a
-                                   1690 ;	se8r01-receive-car.c: 610: PD_CR1 |= (1<<2);
-      0088A7 AE 50 12         [ 2] 1691 	ldw	x, #0x5012
+                                   1690 ;	se8r01-receive-car.c: 615: PA_CR1 |= (1<<3);
+      0088A7 AE 50 03         [ 2] 1691 	ldw	x, #0x5003
       0088AA F6               [ 1] 1692 	ld	a, (x)
-      0088AB AA 04            [ 1] 1693 	or	a, #0x04
+      0088AB AA 08            [ 1] 1693 	or	a, #0x08
       0088AD F7               [ 1] 1694 	ld	(x), a
-                                   1695 ;	se8r01-receive-car.c: 611: PD_CR2 &= 0xFD;
-      0088AE AE 50 13         [ 2] 1696 	ldw	x, #0x5013
+                                   1695 ;	se8r01-receive-car.c: 616: PA_CR2 &= 0xFD;
+      0088AE AE 50 04         [ 2] 1696 	ldw	x, #0x5004
       0088B1 F6               [ 1] 1697 	ld	a, (x)
       0088B2 A4 FD            [ 1] 1698 	and	a, #0xfd
       0088B4 F7               [ 1] 1699 	ld	(x), a
-                                   1700 ;	se8r01-receive-car.c: 612: SE8R01_Init();
+                                   1700 ;	se8r01-receive-car.c: 617: SE8R01_Init();
       0088B5 CD 86 DE         [ 4] 1701 	call	_SE8R01_Init
-                                   1702 ;	se8r01-receive-car.c: 613: UARTPrintF("timer initialised = \n\r");
-      0088B8 AE 89 B2         [ 2] 1703 	ldw	x, #___str_3+0
+                                   1702 ;	se8r01-receive-car.c: 618: UARTPrintF("timer initialised = \n\r");
+      0088B8 AE 89 DC         [ 2] 1703 	ldw	x, #___str_3+0
       0088BB 89               [ 2] 1704 	pushw	x
       0088BC CD 82 79         [ 4] 1705 	call	_UARTPrintF
       0088BF 5B 02            [ 2] 1706 	addw	sp, #2
-                                   1707 ;	se8r01-receive-car.c: 616: while (1) {
+                                   1707 ;	se8r01-receive-car.c: 621: while (1) {
       0088C1                       1708 00110$:
-                                   1709 ;	se8r01-receive-car.c: 618: if ((PD_IDR & (1 << 3))==0) //input low
-      0088C1 AE 50 10         [ 2] 1710 	ldw	x, #0x5010
-      0088C4 F6               [ 1] 1711 	ld	a, (x)
-      0088C5 A5 08            [ 1] 1712 	bcp	a, #0x08
-      0088C7 27 03            [ 1] 1713 	jreq	00170$
-      0088C9 CC 89 51         [ 2] 1714 	jp	00105$
-      0088CC                       1715 00170$:
-                                   1716 ;	se8r01-receive-car.c: 622: delay(240);
-      0088CC 4B F0            [ 1] 1717 	push	#0xf0
-      0088CE 4B 00            [ 1] 1718 	push	#0x00
-      0088D0 CD 82 2E         [ 4] 1719 	call	_delay
-      0088D3 5B 02            [ 2] 1720 	addw	sp, #2
-                                   1721 ;	se8r01-receive-car.c: 623: signal_lv=read_spi_reg(iRF_BANK0_RPD);
-      0088D5 4B 09            [ 1] 1722 	push	#0x09
-      0088D7 CD 81 0A         [ 4] 1723 	call	_read_spi_reg
-      0088DA 5B 01            [ 2] 1724 	addw	sp, #1
-      0088DC C7 00 1A         [ 1] 1725 	ld	_signal_lv+0, a
-                                   1726 ;	se8r01-receive-car.c: 624: status = read_spi_reg(STATUS);
-      0088DF 4B 07            [ 1] 1727 	push	#0x07
-      0088E1 CD 81 0A         [ 4] 1728 	call	_read_spi_reg
-      0088E4 5B 01            [ 2] 1729 	addw	sp, #1
-      0088E6 C7 00 1D         [ 1] 1730 	ld	_status+0, a
-                                   1731 ;	se8r01-receive-car.c: 626: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
-      0088E9 72 06 00 1D 02   [ 2] 1732 	btjt	_status+0, #6, 00171$
-      0088EE 20 57            [ 2] 1733 	jra	00103$
-      0088F0                       1734 00171$:
-                                   1735 ;	se8r01-receive-car.c: 629: pip= (status & 0b00001110)>>1;
-      0088F0 C6 00 1D         [ 1] 1736 	ld	a, _status+0
-      0088F3 A4 0E            [ 1] 1737 	and	a, #0x0e
-      0088F5 44               [ 1] 1738 	srl	a
-      0088F6 5F               [ 1] 1739 	clrw	x
-      0088F7 97               [ 1] 1740 	ld	xl, a
-      0088F8 CF 00 1B         [ 2] 1741 	ldw	_pip+0, x
-                                   1742 ;	se8r01-receive-car.c: 630: pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
-      0088FB 4B 60            [ 1] 1743 	push	#0x60
-      0088FD CD 81 0A         [ 4] 1744 	call	_read_spi_reg
-      008900 5B 01            [ 2] 1745 	addw	sp, #1
-      008902 5F               [ 1] 1746 	clrw	x
-      008903 97               [ 1] 1747 	ld	xl, a
-      008904 CF 00 16         [ 2] 1748 	ldw	_pload_width_now+0, x
-                                   1749 ;	se8r01-receive-car.c: 631: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
-      008907 AE 00 2E         [ 2] 1750 	ldw	x, #_rx_buf+0
-      00890A 1F 32            [ 2] 1751 	ldw	(0x32, sp), x
-      00890C 1E 32            [ 2] 1752 	ldw	x, (0x32, sp)
-      00890E 4B 20            [ 1] 1753 	push	#0x20
-      008910 89               [ 2] 1754 	pushw	x
-      008911 4B 61            [ 1] 1755 	push	#0x61
-      008913 CD 81 80         [ 4] 1756 	call	_read_spi_buf
-      008916 5B 04            [ 2] 1757 	addw	sp, #4
-                                   1758 ;	se8r01-receive-car.c: 632: write_spi_reg(FLUSH_RX,0);
-      008918 4B 00            [ 1] 1759 	push	#0x00
-      00891A 4B E2            [ 1] 1760 	push	#0xe2
-      00891C CD 80 CE         [ 4] 1761 	call	_write_spi_reg
-      00891F 5B 02            [ 2] 1762 	addw	sp, #2
-                                   1763 ;	se8r01-receive-car.c: 634: newdata=1;
-      008921 35 01 00 19      [ 1] 1764 	mov	_newdata+1, #0x01
-      008925 72 5F 00 18      [ 1] 1765 	clr	_newdata+0
-                                   1766 ;	se8r01-receive-car.c: 635: for (teller=0;teller<32;++teller)
-      008929 5F               [ 1] 1767 	clrw	x
-      00892A                       1768 00112$:
-                                   1769 ;	se8r01-receive-car.c: 636: print_UCHAR_hex (rx_buf[teller]);
-      00892A 90 93            [ 1] 1770 	ldw	y, x
-      00892C 72 F9 32         [ 2] 1771 	addw	y, (0x32, sp)
-      00892F 90 F6            [ 1] 1772 	ld	a, (y)
-      008931 89               [ 2] 1773 	pushw	x
-      008932 88               [ 1] 1774 	push	a
-      008933 CD 82 90         [ 4] 1775 	call	_print_UCHAR_hex
-      008936 84               [ 1] 1776 	pop	a
-      008937 85               [ 2] 1777 	popw	x
-                                   1778 ;	se8r01-receive-car.c: 635: for (teller=0;teller<32;++teller)
-      008938 5C               [ 2] 1779 	incw	x
-      008939 A3 00 20         [ 2] 1780 	cpw	x, #0x0020
-      00893C 2F EC            [ 1] 1781 	jrslt	00112$
-                                   1782 ;	se8r01-receive-car.c: 637: UARTPrintF("\n\r");
-      00893E AE 89 C9         [ 2] 1783 	ldw	x, #___str_4+0
-      008941 89               [ 2] 1784 	pushw	x
-      008942 CD 82 79         [ 4] 1785 	call	_UARTPrintF
-      008945 5B 02            [ 2] 1786 	addw	sp, #2
-      008947                       1787 00103$:
-                                   1788 ;	se8r01-receive-car.c: 640: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
-      008947 3B 00 1D         [ 1] 1789 	push	_status+0
-      00894A 4B 27            [ 1] 1790 	push	#0x27
-      00894C CD 80 CE         [ 4] 1791 	call	_write_spi_reg
-      00894F 5B 02            [ 2] 1792 	addw	sp, #2
-      008951                       1793 00105$:
-                                   1794 ;	se8r01-receive-car.c: 645: for (x1 = 0; x1 < 50; ++x1)
-      008951 5F               [ 1] 1795 	clrw	x
-      008952 1F 2B            [ 2] 1796 	ldw	(0x2b, sp), x
-      008954                       1797 00121$:
-      008954 1E 2B            [ 2] 1798 	ldw	x, (0x2b, sp)
-      008956 A3 00 32         [ 2] 1799 	cpw	x, #0x0032
-      008959 2F 03            [ 1] 1800 	jrslt	00173$
-      00895B CC 88 C1         [ 2] 1801 	jp	00110$
-      00895E                       1802 00173$:
-                                   1803 ;	se8r01-receive-car.c: 646: for (y1 = 0; y1 < 50; ++y1)
-      00895E 5F               [ 1] 1804 	clrw	x
-      00895F 1F 29            [ 2] 1805 	ldw	(0x29, sp), x
-      008961                       1806 00118$:
-      008961 1E 29            [ 2] 1807 	ldw	x, (0x29, sp)
-      008963 A3 00 32         [ 2] 1808 	cpw	x, #0x0032
-      008966 2E 19            [ 1] 1809 	jrsge	00122$
-                                   1810 ;	se8r01-receive-car.c: 647: for (z1 = 0; z1 < 50; ++z1)
-      008968 5F               [ 1] 1811 	clrw	x
-      008969 1F 27            [ 2] 1812 	ldw	(0x27, sp), x
-      00896B                       1813 00115$:
-      00896B 1E 27            [ 2] 1814 	ldw	x, (0x27, sp)
-      00896D A3 00 32         [ 2] 1815 	cpw	x, #0x0032
-      008970 2E 08            [ 1] 1816 	jrsge	00119$
-                                   1817 ;	se8r01-receive-car.c: 648: __asm__("nop");
-      008972 9D               [ 1] 1818 	nop
-                                   1819 ;	se8r01-receive-car.c: 647: for (z1 = 0; z1 < 50; ++z1)
-      008973 1E 27            [ 2] 1820 	ldw	x, (0x27, sp)
-      008975 5C               [ 2] 1821 	incw	x
-      008976 1F 27            [ 2] 1822 	ldw	(0x27, sp), x
-      008978 20 F1            [ 2] 1823 	jra	00115$
-      00897A                       1824 00119$:
-                                   1825 ;	se8r01-receive-car.c: 646: for (y1 = 0; y1 < 50; ++y1)
-      00897A 1E 29            [ 2] 1826 	ldw	x, (0x29, sp)
-      00897C 5C               [ 2] 1827 	incw	x
-      00897D 1F 29            [ 2] 1828 	ldw	(0x29, sp), x
-      00897F 20 E0            [ 2] 1829 	jra	00118$
-      008981                       1830 00122$:
-                                   1831 ;	se8r01-receive-car.c: 645: for (x1 = 0; x1 < 50; ++x1)
-      008981 1E 2B            [ 2] 1832 	ldw	x, (0x2b, sp)
-      008983 5C               [ 2] 1833 	incw	x
-      008984 1F 2B            [ 2] 1834 	ldw	(0x2b, sp), x
-      008986 20 CC            [ 2] 1835 	jra	00121$
-      008988 5B 33            [ 2] 1836 	addw	sp, #51
-      00898A 81               [ 4] 1837 	ret
-                                   1838 	.area CODE
-      00898B                       1839 ___str_0:
-      00898B 73 74 61 72 74 20 64  1840 	.ascii "start debug "
+                                   1709 ;	se8r01-receive-car.c: 623: TIM2_CCR3H =1000/256; //compare capture register value
+      0088C1 AE 53 15         [ 2] 1710 	ldw	x, #0x5315
+      0088C4 A6 03            [ 1] 1711 	ld	a, #0x03
+      0088C6 F7               [ 1] 1712 	ld	(x), a
+                                   1713 ;	se8r01-receive-car.c: 624: TIM2_CCR3L =1000%256;
+      0088C7 AE 53 16         [ 2] 1714 	ldw	x, #0x5316
+      0088CA A6 E8            [ 1] 1715 	ld	a, #0xe8
+      0088CC F7               [ 1] 1716 	ld	(x), a
+                                   1717 ;	se8r01-receive-car.c: 625: delay(1000);
+      0088CD 4B E8            [ 1] 1718 	push	#0xe8
+      0088CF 4B 03            [ 1] 1719 	push	#0x03
+      0088D1 CD 82 2E         [ 4] 1720 	call	_delay
+      0088D4 5B 02            [ 2] 1721 	addw	sp, #2
+                                   1722 ;	se8r01-receive-car.c: 627: TIM2_CCR3H =2000/256; //compare capture register value
+      0088D6 AE 53 15         [ 2] 1723 	ldw	x, #0x5315
+      0088D9 A6 07            [ 1] 1724 	ld	a, #0x07
+      0088DB F7               [ 1] 1725 	ld	(x), a
+                                   1726 ;	se8r01-receive-car.c: 628: TIM2_CCR3L =2000%256;
+      0088DC AE 53 16         [ 2] 1727 	ldw	x, #0x5316
+      0088DF A6 D0            [ 1] 1728 	ld	a, #0xd0
+      0088E1 F7               [ 1] 1729 	ld	(x), a
+                                   1730 ;	se8r01-receive-car.c: 629: delay(1000);
+      0088E2 4B E8            [ 1] 1731 	push	#0xe8
+      0088E4 4B 03            [ 1] 1732 	push	#0x03
+      0088E6 CD 82 2E         [ 4] 1733 	call	_delay
+      0088E9 5B 02            [ 2] 1734 	addw	sp, #2
+                                   1735 ;	se8r01-receive-car.c: 632: if ((PD_IDR & (1 << 3))==0) //input low
+      0088EB AE 50 10         [ 2] 1736 	ldw	x, #0x5010
+      0088EE F6               [ 1] 1737 	ld	a, (x)
+      0088EF A5 08            [ 1] 1738 	bcp	a, #0x08
+      0088F1 27 03            [ 1] 1739 	jreq	00170$
+      0088F3 CC 89 7B         [ 2] 1740 	jp	00105$
+      0088F6                       1741 00170$:
+                                   1742 ;	se8r01-receive-car.c: 636: delay(240);
+      0088F6 4B F0            [ 1] 1743 	push	#0xf0
+      0088F8 4B 00            [ 1] 1744 	push	#0x00
+      0088FA CD 82 2E         [ 4] 1745 	call	_delay
+      0088FD 5B 02            [ 2] 1746 	addw	sp, #2
+                                   1747 ;	se8r01-receive-car.c: 637: signal_lv=read_spi_reg(iRF_BANK0_RPD);
+      0088FF 4B 09            [ 1] 1748 	push	#0x09
+      008901 CD 81 0A         [ 4] 1749 	call	_read_spi_reg
+      008904 5B 01            [ 2] 1750 	addw	sp, #1
+      008906 C7 00 1A         [ 1] 1751 	ld	_signal_lv+0, a
+                                   1752 ;	se8r01-receive-car.c: 638: status = read_spi_reg(STATUS);
+      008909 4B 07            [ 1] 1753 	push	#0x07
+      00890B CD 81 0A         [ 4] 1754 	call	_read_spi_reg
+      00890E 5B 01            [ 2] 1755 	addw	sp, #1
+      008910 C7 00 1D         [ 1] 1756 	ld	_status+0, a
+                                   1757 ;	se8r01-receive-car.c: 640: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
+      008913 72 06 00 1D 02   [ 2] 1758 	btjt	_status+0, #6, 00171$
+      008918 20 57            [ 2] 1759 	jra	00103$
+      00891A                       1760 00171$:
+                                   1761 ;	se8r01-receive-car.c: 643: pip= (status & 0b00001110)>>1;
+      00891A C6 00 1D         [ 1] 1762 	ld	a, _status+0
+      00891D A4 0E            [ 1] 1763 	and	a, #0x0e
+      00891F 44               [ 1] 1764 	srl	a
+      008920 5F               [ 1] 1765 	clrw	x
+      008921 97               [ 1] 1766 	ld	xl, a
+      008922 CF 00 1B         [ 2] 1767 	ldw	_pip+0, x
+                                   1768 ;	se8r01-receive-car.c: 644: pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
+      008925 4B 60            [ 1] 1769 	push	#0x60
+      008927 CD 81 0A         [ 4] 1770 	call	_read_spi_reg
+      00892A 5B 01            [ 2] 1771 	addw	sp, #1
+      00892C 5F               [ 1] 1772 	clrw	x
+      00892D 97               [ 1] 1773 	ld	xl, a
+      00892E CF 00 16         [ 2] 1774 	ldw	_pload_width_now+0, x
+                                   1775 ;	se8r01-receive-car.c: 645: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
+      008931 AE 00 2E         [ 2] 1776 	ldw	x, #_rx_buf+0
+      008934 1F 32            [ 2] 1777 	ldw	(0x32, sp), x
+      008936 1E 32            [ 2] 1778 	ldw	x, (0x32, sp)
+      008938 4B 20            [ 1] 1779 	push	#0x20
+      00893A 89               [ 2] 1780 	pushw	x
+      00893B 4B 61            [ 1] 1781 	push	#0x61
+      00893D CD 81 80         [ 4] 1782 	call	_read_spi_buf
+      008940 5B 04            [ 2] 1783 	addw	sp, #4
+                                   1784 ;	se8r01-receive-car.c: 646: write_spi_reg(FLUSH_RX,0);
+      008942 4B 00            [ 1] 1785 	push	#0x00
+      008944 4B E2            [ 1] 1786 	push	#0xe2
+      008946 CD 80 CE         [ 4] 1787 	call	_write_spi_reg
+      008949 5B 02            [ 2] 1788 	addw	sp, #2
+                                   1789 ;	se8r01-receive-car.c: 648: newdata=1;
+      00894B 35 01 00 19      [ 1] 1790 	mov	_newdata+1, #0x01
+      00894F 72 5F 00 18      [ 1] 1791 	clr	_newdata+0
+                                   1792 ;	se8r01-receive-car.c: 649: for (teller=0;teller<32;++teller)
+      008953 5F               [ 1] 1793 	clrw	x
+      008954                       1794 00112$:
+                                   1795 ;	se8r01-receive-car.c: 650: print_UCHAR_hex (rx_buf[teller]);
+      008954 90 93            [ 1] 1796 	ldw	y, x
+      008956 72 F9 32         [ 2] 1797 	addw	y, (0x32, sp)
+      008959 90 F6            [ 1] 1798 	ld	a, (y)
+      00895B 89               [ 2] 1799 	pushw	x
+      00895C 88               [ 1] 1800 	push	a
+      00895D CD 82 90         [ 4] 1801 	call	_print_UCHAR_hex
+      008960 84               [ 1] 1802 	pop	a
+      008961 85               [ 2] 1803 	popw	x
+                                   1804 ;	se8r01-receive-car.c: 649: for (teller=0;teller<32;++teller)
+      008962 5C               [ 2] 1805 	incw	x
+      008963 A3 00 20         [ 2] 1806 	cpw	x, #0x0020
+      008966 2F EC            [ 1] 1807 	jrslt	00112$
+                                   1808 ;	se8r01-receive-car.c: 651: UARTPrintF("\n\r");
+      008968 AE 89 F3         [ 2] 1809 	ldw	x, #___str_4+0
+      00896B 89               [ 2] 1810 	pushw	x
+      00896C CD 82 79         [ 4] 1811 	call	_UARTPrintF
+      00896F 5B 02            [ 2] 1812 	addw	sp, #2
+      008971                       1813 00103$:
+                                   1814 ;	se8r01-receive-car.c: 654: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
+      008971 3B 00 1D         [ 1] 1815 	push	_status+0
+      008974 4B 27            [ 1] 1816 	push	#0x27
+      008976 CD 80 CE         [ 4] 1817 	call	_write_spi_reg
+      008979 5B 02            [ 2] 1818 	addw	sp, #2
+      00897B                       1819 00105$:
+                                   1820 ;	se8r01-receive-car.c: 659: for (x1 = 0; x1 < 50; ++x1)
+      00897B 5F               [ 1] 1821 	clrw	x
+      00897C 1F 2B            [ 2] 1822 	ldw	(0x2b, sp), x
+      00897E                       1823 00121$:
+      00897E 1E 2B            [ 2] 1824 	ldw	x, (0x2b, sp)
+      008980 A3 00 32         [ 2] 1825 	cpw	x, #0x0032
+      008983 2F 03            [ 1] 1826 	jrslt	00173$
+      008985 CC 88 C1         [ 2] 1827 	jp	00110$
+      008988                       1828 00173$:
+                                   1829 ;	se8r01-receive-car.c: 660: for (y1 = 0; y1 < 50; ++y1)
+      008988 5F               [ 1] 1830 	clrw	x
+      008989 1F 29            [ 2] 1831 	ldw	(0x29, sp), x
+      00898B                       1832 00118$:
+      00898B 1E 29            [ 2] 1833 	ldw	x, (0x29, sp)
+      00898D A3 00 32         [ 2] 1834 	cpw	x, #0x0032
+      008990 2E 19            [ 1] 1835 	jrsge	00122$
+                                   1836 ;	se8r01-receive-car.c: 661: for (z1 = 0; z1 < 50; ++z1)
+      008992 5F               [ 1] 1837 	clrw	x
+      008993 1F 27            [ 2] 1838 	ldw	(0x27, sp), x
+      008995                       1839 00115$:
+      008995 1E 27            [ 2] 1840 	ldw	x, (0x27, sp)
+      008997 A3 00 32         [ 2] 1841 	cpw	x, #0x0032
+      00899A 2E 08            [ 1] 1842 	jrsge	00119$
+                                   1843 ;	se8r01-receive-car.c: 662: __asm__("nop");
+      00899C 9D               [ 1] 1844 	nop
+                                   1845 ;	se8r01-receive-car.c: 661: for (z1 = 0; z1 < 50; ++z1)
+      00899D 1E 27            [ 2] 1846 	ldw	x, (0x27, sp)
+      00899F 5C               [ 2] 1847 	incw	x
+      0089A0 1F 27            [ 2] 1848 	ldw	(0x27, sp), x
+      0089A2 20 F1            [ 2] 1849 	jra	00115$
+      0089A4                       1850 00119$:
+                                   1851 ;	se8r01-receive-car.c: 660: for (y1 = 0; y1 < 50; ++y1)
+      0089A4 1E 29            [ 2] 1852 	ldw	x, (0x29, sp)
+      0089A6 5C               [ 2] 1853 	incw	x
+      0089A7 1F 29            [ 2] 1854 	ldw	(0x29, sp), x
+      0089A9 20 E0            [ 2] 1855 	jra	00118$
+      0089AB                       1856 00122$:
+                                   1857 ;	se8r01-receive-car.c: 659: for (x1 = 0; x1 < 50; ++x1)
+      0089AB 1E 2B            [ 2] 1858 	ldw	x, (0x2b, sp)
+      0089AD 5C               [ 2] 1859 	incw	x
+      0089AE 1F 2B            [ 2] 1860 	ldw	(0x2b, sp), x
+      0089B0 20 CC            [ 2] 1861 	jra	00121$
+      0089B2 5B 33            [ 2] 1862 	addw	sp, #51
+      0089B4 81               [ 4] 1863 	ret
+                                   1864 	.area CODE
+      0089B5                       1865 ___str_0:
+      0089B5 73 74 61 72 74 20 64  1866 	.ascii "start debug "
              65 62 75 67 20
-      008997 0A                    1841 	.db 0x0A
-      008998 0D                    1842 	.db 0x0D
-      008999 00                    1843 	.db 0x00
-      00899A                       1844 ___str_1:
-      00899A 63 6F 6E 66 69 67 20  1845 	.ascii "config = "
+      0089C1 0A                    1867 	.db 0x0A
+      0089C2 0D                    1868 	.db 0x0D
+      0089C3 00                    1869 	.db 0x00
+      0089C4                       1870 ___str_1:
+      0089C4 63 6F 6E 66 69 67 20  1871 	.ascii "config = "
              3D 20
-      0089A3 0A                    1846 	.db 0x0A
-      0089A4 0D                    1847 	.db 0x0D
-      0089A5 00                    1848 	.db 0x00
-      0089A6                       1849 ___str_2:
-      0089A6 73 74 61 74 75 73 20  1850 	.ascii "status = "
+      0089CD 0A                    1872 	.db 0x0A
+      0089CE 0D                    1873 	.db 0x0D
+      0089CF 00                    1874 	.db 0x00
+      0089D0                       1875 ___str_2:
+      0089D0 73 74 61 74 75 73 20  1876 	.ascii "status = "
              3D 20
-      0089AF 0A                    1851 	.db 0x0A
-      0089B0 0D                    1852 	.db 0x0D
-      0089B1 00                    1853 	.db 0x00
-      0089B2                       1854 ___str_3:
-      0089B2 74 69 6D 65 72 20 69  1855 	.ascii "timer initialised = "
+      0089D9 0A                    1877 	.db 0x0A
+      0089DA 0D                    1878 	.db 0x0D
+      0089DB 00                    1879 	.db 0x00
+      0089DC                       1880 ___str_3:
+      0089DC 74 69 6D 65 72 20 69  1881 	.ascii "timer initialised = "
              6E 69 74 69 61 6C 69
              73 65 64 20 3D 20
-      0089C6 0A                    1856 	.db 0x0A
-      0089C7 0D                    1857 	.db 0x0D
-      0089C8 00                    1858 	.db 0x00
-      0089C9                       1859 ___str_4:
-      0089C9 0A                    1860 	.db 0x0A
-      0089CA 0D                    1861 	.db 0x0D
-      0089CB 00                    1862 	.db 0x00
-                                   1863 	.area INITIALIZER
-      008A41                       1864 __xinit__SE8R01_DR_2M:
-      008A41 00 00                 1865 	.dw #0x0000
-      008A43                       1866 __xinit__SE8R01_DR_1M:
-      008A43 00 00                 1867 	.dw #0x0000
-      008A45                       1868 __xinit__SE8R01_DR_500K:
-      008A45 00 01                 1869 	.dw #0x0001
-      008A47                       1870 __xinit__pload_width_now:
-      008A47 00 00                 1871 	.dw #0x0000
-      008A49                       1872 __xinit__newdata:
-      008A49 00 00                 1873 	.dw #0x0000
-      008A4B                       1874 __xinit__signal_lv:
-      008A4B 00                    1875 	.db #0x00	;  0
-      008A4C                       1876 __xinit__pip:
-      008A4C 00 00                 1877 	.dw #0x0000
-      008A4E                       1878 __xinit__status:
-      008A4E 00                    1879 	.db #0x00	; 0
-      008A4F                       1880 __xinit__TX_ADDRESS:
-      008A4F B3                    1881 	.db #0xB3	; 179
-      008A50 43                    1882 	.db #0x43	; 67	'C'
-      008A51 10                    1883 	.db #0x10	; 16
-      008A52 10                    1884 	.db #0x10	; 16
-      008A53                       1885 __xinit__ADDRESS2:
-      008A53 B1                    1886 	.db #0xB1	; 177
-      008A54                       1887 __xinit__ADDRESS3:
-      008A54 B2                    1888 	.db #0xB2	; 178
-      008A55                       1889 __xinit__ADDRESS4:
-      008A55 B3                    1890 	.db #0xB3	; 179
-      008A56                       1891 __xinit__ADDRESS5:
-      008A56 B4                    1892 	.db #0xB4	; 180
-      008A57                       1893 __xinit__ADDRESS1:
-      008A57 B0                    1894 	.db #0xB0	; 176
-      008A58 43                    1895 	.db #0x43	; 67	'C'
-      008A59 10                    1896 	.db #0x10	; 16
-      008A5A 10                    1897 	.db #0x10	; 16
-      008A5B                       1898 __xinit__ADDRESS0:
-      008A5B 34                    1899 	.db #0x34	; 52	'4'
-      008A5C 43                    1900 	.db #0x43	; 67	'C'
-      008A5D 10                    1901 	.db #0x10	; 16
-      008A5E 10                    1902 	.db #0x10	; 16
-      008A5F                       1903 __xinit__rx_buf:
-      008A5F 00                    1904 	.db #0x00	; 0
-      008A60 00                    1905 	.db 0x00
-      008A61 00                    1906 	.db 0x00
-      008A62 00                    1907 	.db 0x00
-      008A63 00                    1908 	.db 0x00
-      008A64 00                    1909 	.db 0x00
-      008A65 00                    1910 	.db 0x00
-      008A66 00                    1911 	.db 0x00
-      008A67 00                    1912 	.db 0x00
-      008A68 00                    1913 	.db 0x00
-      008A69 00                    1914 	.db 0x00
-      008A6A 00                    1915 	.db 0x00
-      008A6B 00                    1916 	.db 0x00
-      008A6C 00                    1917 	.db 0x00
-      008A6D 00                    1918 	.db 0x00
-      008A6E 00                    1919 	.db 0x00
-      008A6F 00                    1920 	.db 0x00
-      008A70 00                    1921 	.db 0x00
-      008A71 00                    1922 	.db 0x00
-      008A72 00                    1923 	.db 0x00
-      008A73 00                    1924 	.db 0x00
-      008A74 00                    1925 	.db 0x00
-      008A75 00                    1926 	.db 0x00
-      008A76 00                    1927 	.db 0x00
-      008A77 00                    1928 	.db 0x00
-      008A78 00                    1929 	.db 0x00
-      008A79 00                    1930 	.db 0x00
-      008A7A 00                    1931 	.db 0x00
-      008A7B 00                    1932 	.db 0x00
-      008A7C 00                    1933 	.db 0x00
-      008A7D 00                    1934 	.db 0x00
-      008A7E 00                    1935 	.db 0x00
-      008A7F                       1936 __xinit__tx_buf:
-      008A7F 00                    1937 	.db #0x00	; 0
-      008A80 00                    1938 	.db 0x00
-      008A81 00                    1939 	.db 0x00
-      008A82 00                    1940 	.db 0x00
-      008A83 00                    1941 	.db 0x00
-      008A84 00                    1942 	.db 0x00
-      008A85 00                    1943 	.db 0x00
-      008A86 00                    1944 	.db 0x00
-      008A87 00                    1945 	.db 0x00
-      008A88 00                    1946 	.db 0x00
-      008A89 00                    1947 	.db 0x00
-      008A8A 00                    1948 	.db 0x00
-      008A8B 00                    1949 	.db 0x00
-      008A8C 00                    1950 	.db 0x00
-      008A8D 00                    1951 	.db 0x00
-      008A8E 00                    1952 	.db 0x00
-      008A8F 00                    1953 	.db 0x00
-      008A90 00                    1954 	.db 0x00
-      008A91 00                    1955 	.db 0x00
-      008A92 00                    1956 	.db 0x00
-      008A93 00                    1957 	.db 0x00
-      008A94 00                    1958 	.db 0x00
-      008A95 00                    1959 	.db 0x00
-      008A96 00                    1960 	.db 0x00
-      008A97 00                    1961 	.db 0x00
-      008A98 00                    1962 	.db 0x00
-      008A99 00                    1963 	.db 0x00
-      008A9A 00                    1964 	.db 0x00
-      008A9B 00                    1965 	.db 0x00
-      008A9C 00                    1966 	.db 0x00
-      008A9D 00                    1967 	.db 0x00
-      008A9E 00                    1968 	.db 0x00
-                                   1969 	.area CABS (ABS)
+      0089F0 0A                    1882 	.db 0x0A
+      0089F1 0D                    1883 	.db 0x0D
+      0089F2 00                    1884 	.db 0x00
+      0089F3                       1885 ___str_4:
+      0089F3 0A                    1886 	.db 0x0A
+      0089F4 0D                    1887 	.db 0x0D
+      0089F5 00                    1888 	.db 0x00
+                                   1889 	.area INITIALIZER
+      008A6B                       1890 __xinit__SE8R01_DR_2M:
+      008A6B 00 00                 1891 	.dw #0x0000
+      008A6D                       1892 __xinit__SE8R01_DR_1M:
+      008A6D 00 00                 1893 	.dw #0x0000
+      008A6F                       1894 __xinit__SE8R01_DR_500K:
+      008A6F 00 01                 1895 	.dw #0x0001
+      008A71                       1896 __xinit__pload_width_now:
+      008A71 00 00                 1897 	.dw #0x0000
+      008A73                       1898 __xinit__newdata:
+      008A73 00 00                 1899 	.dw #0x0000
+      008A75                       1900 __xinit__signal_lv:
+      008A75 00                    1901 	.db #0x00	;  0
+      008A76                       1902 __xinit__pip:
+      008A76 00 00                 1903 	.dw #0x0000
+      008A78                       1904 __xinit__status:
+      008A78 00                    1905 	.db #0x00	; 0
+      008A79                       1906 __xinit__TX_ADDRESS:
+      008A79 B3                    1907 	.db #0xB3	; 179
+      008A7A 43                    1908 	.db #0x43	; 67	'C'
+      008A7B 10                    1909 	.db #0x10	; 16
+      008A7C 10                    1910 	.db #0x10	; 16
+      008A7D                       1911 __xinit__ADDRESS2:
+      008A7D B1                    1912 	.db #0xB1	; 177
+      008A7E                       1913 __xinit__ADDRESS3:
+      008A7E B2                    1914 	.db #0xB2	; 178
+      008A7F                       1915 __xinit__ADDRESS4:
+      008A7F B3                    1916 	.db #0xB3	; 179
+      008A80                       1917 __xinit__ADDRESS5:
+      008A80 B4                    1918 	.db #0xB4	; 180
+      008A81                       1919 __xinit__ADDRESS1:
+      008A81 B0                    1920 	.db #0xB0	; 176
+      008A82 43                    1921 	.db #0x43	; 67	'C'
+      008A83 10                    1922 	.db #0x10	; 16
+      008A84 10                    1923 	.db #0x10	; 16
+      008A85                       1924 __xinit__ADDRESS0:
+      008A85 34                    1925 	.db #0x34	; 52	'4'
+      008A86 43                    1926 	.db #0x43	; 67	'C'
+      008A87 10                    1927 	.db #0x10	; 16
+      008A88 10                    1928 	.db #0x10	; 16
+      008A89                       1929 __xinit__rx_buf:
+      008A89 00                    1930 	.db #0x00	; 0
+      008A8A 00                    1931 	.db 0x00
+      008A8B 00                    1932 	.db 0x00
+      008A8C 00                    1933 	.db 0x00
+      008A8D 00                    1934 	.db 0x00
+      008A8E 00                    1935 	.db 0x00
+      008A8F 00                    1936 	.db 0x00
+      008A90 00                    1937 	.db 0x00
+      008A91 00                    1938 	.db 0x00
+      008A92 00                    1939 	.db 0x00
+      008A93 00                    1940 	.db 0x00
+      008A94 00                    1941 	.db 0x00
+      008A95 00                    1942 	.db 0x00
+      008A96 00                    1943 	.db 0x00
+      008A97 00                    1944 	.db 0x00
+      008A98 00                    1945 	.db 0x00
+      008A99 00                    1946 	.db 0x00
+      008A9A 00                    1947 	.db 0x00
+      008A9B 00                    1948 	.db 0x00
+      008A9C 00                    1949 	.db 0x00
+      008A9D 00                    1950 	.db 0x00
+      008A9E 00                    1951 	.db 0x00
+      008A9F 00                    1952 	.db 0x00
+      008AA0 00                    1953 	.db 0x00
+      008AA1 00                    1954 	.db 0x00
+      008AA2 00                    1955 	.db 0x00
+      008AA3 00                    1956 	.db 0x00
+      008AA4 00                    1957 	.db 0x00
+      008AA5 00                    1958 	.db 0x00
+      008AA6 00                    1959 	.db 0x00
+      008AA7 00                    1960 	.db 0x00
+      008AA8 00                    1961 	.db 0x00
+      008AA9                       1962 __xinit__tx_buf:
+      008AA9 00                    1963 	.db #0x00	; 0
+      008AAA 00                    1964 	.db 0x00
+      008AAB 00                    1965 	.db 0x00
+      008AAC 00                    1966 	.db 0x00
+      008AAD 00                    1967 	.db 0x00
+      008AAE 00                    1968 	.db 0x00
+      008AAF 00                    1969 	.db 0x00
+      008AB0 00                    1970 	.db 0x00
+      008AB1 00                    1971 	.db 0x00
+      008AB2 00                    1972 	.db 0x00
+      008AB3 00                    1973 	.db 0x00
+      008AB4 00                    1974 	.db 0x00
+      008AB5 00                    1975 	.db 0x00
+      008AB6 00                    1976 	.db 0x00
+      008AB7 00                    1977 	.db 0x00
+      008AB8 00                    1978 	.db 0x00
+      008AB9 00                    1979 	.db 0x00
+      008ABA 00                    1980 	.db 0x00
+      008ABB 00                    1981 	.db 0x00
+      008ABC 00                    1982 	.db 0x00
+      008ABD 00                    1983 	.db 0x00
+      008ABE 00                    1984 	.db 0x00
+      008ABF 00                    1985 	.db 0x00
+      008AC0 00                    1986 	.db 0x00
+      008AC1 00                    1987 	.db 0x00
+      008AC2 00                    1988 	.db 0x00
+      008AC3 00                    1989 	.db 0x00
+      008AC4 00                    1990 	.db 0x00
+      008AC5 00                    1991 	.db 0x00
+      008AC6 00                    1992 	.db 0x00
+      008AC7 00                    1993 	.db 0x00
+      008AC8 00                    1994 	.db 0x00
+                                   1995 	.area CABS (ABS)
