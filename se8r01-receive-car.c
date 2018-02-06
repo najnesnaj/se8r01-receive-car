@@ -562,7 +562,7 @@ AFR1 Alternate function remapping option 1
 
 	TIM2_PSCR =0X04;// 16 Mhz/2^4 =  1Mhz  -- the prescaler is a 4 bit number!
 
-//servo needs to vary between 1 ms and 2 ms  (5 and 10 / duty cycle 50hz)
+	//servo needs to vary between 1 ms and 2 ms  (5 and 10 / duty cycle 50hz)
 
 	TIM2_ARRH =20000/256; // auto reload register
 	TIM2_ARRL =20000%256; // 1000 Khz/20000 is 50 events per second 
@@ -573,10 +573,27 @@ AFR1 Alternate function remapping option 1
 	TIM2_CCR3L =1000%256;
 
 
-	//	Start counting / update interrupt disabled;
-	TIM2_CR1 |=0x81;
 	//TIM2_IER 0x00 |=;
 	//
+
+	// init PD4 Timer2 Channel for PWM : connector J4
+	// this is for the electro motor control
+
+	TIM2_CCMR1 |=0X70;//Set the timer 2 / channel 1 output
+	TIM2_CCMR1 |=0X04;//Comparison of 3 pre load / / output enable
+	TIM2_CCER1 |=0x03;//  Channel 3 enable, active low output configuration
+
+
+	//should be 50 duty cycle 
+	TIM2_CCR3H =10000/256; //compare capture register value
+	TIM2_CCR3L =10000%256;
+
+
+
+
+	//	Start counting / update interrupt disabled;
+	TIM2_CR1 |=0x81;
+
 }
 
 
@@ -608,7 +625,7 @@ int main () {
 	UARTPrintF("status = \n\r");
 	print_UCHAR_hex(readstatus);
 
-//pwm op pin PA3 onderste van J2 connector TIM2_CH3
+	//pwm op pin PA3 onderste van J2 connector TIM2_CH3
 
 	Init_Tim2 (); //pwm for led on pd2
 	PA_DDR |= (1<<3);
@@ -617,16 +634,51 @@ int main () {
 	SE8R01_Init();
 	UARTPrintF("timer initialised = \n\r");
 
+	//test tb6612fng motordriver
+	//
+	//PB4   (connector J3)
+	//PB5
+
+
+	PB_DDR = (1 << 4) | (1 << 5);  // output mode
+	PB_CR1 = (1 << 4) | (1 << 5);  // push-pull
+	PB_CR2 = (1 << 4) | (1 << 5);  // up to 10MHz speed
+
+
+	//PA1   (connector J2)  
+	//PA2
+
+	PA_DDR = (1 << 1) | (1 << 2);  // output mode
+	PA_CR1 = (1 << 1) | (1 << 2);  // push-pull
+	PA_CR2 = (1 << 1) | (1 << 2);  // up to 10MHz speed
+
+
+	// PB4 is connected to PWMA  it is high for full power 
+
+	PB_ODR |= 1 << 4;
+
+	// PB5 is connected to STBY  it is high to activate motor
+
+	PB_ODR |= 1 << 5;
+
+
+	// PA1 is connected to AIN1 direction forward
+
+	PA_ODR |= 1 << 1;
+
+	// PA2 is connected to AIN2 direction reverse 
+
+	//PA_ODR |= 1 << 2;
 
 	while (1) {
-//change duty cycle to change servo
-   TIM2_CCR3H =1000/256; //compare capture register value
-           TIM2_CCR3L =1000%256;
-			delay(1000);
+		//change duty cycle to change servo
+		TIM2_CCR3H =1000/256; //compare capture register value
+		TIM2_CCR3L =1000%256;
+		delay(1000);
 
-   TIM2_CCR3H =2000/256; //compare capture register value
-           TIM2_CCR3L =2000%256;
-			delay(1000);
+		TIM2_CCR3H =2000/256; //compare capture register value
+		TIM2_CCR3L =2000%256;
+		delay(1000);
 
 
 		if ((PD_IDR & (1 << 3))==0) //input low

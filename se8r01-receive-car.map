@@ -44,12 +44,12 @@ CABS                                00000000    00000000 =           0. bytes (A
      00000083  l_HOME                          
      00000100  l_IRAM                          
      00000100  l_SSEG                          
-     000009CB  l_CODE                          
+     00000A04  l_CODE                          
      00008000  s_HOME                          
      00008083  s_GSINIT                        
      0000809D  s_GSFINAL                       
      000080A0  s_CODE                          
-     00008A6B  s_INITIALIZER                   
+     00008AA4  s_INITIALIZER                   
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
@@ -151,7 +151,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                000080A0    000009CB =        2507. bytes (REL,CON)
+CODE                                000080A0    00000A04 =        2564. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -174,14 +174,14 @@ CODE                                000080A0    000009CB =        2507. bytes (R
      000086DE  _SE8R01_Init                       se8r01_receive_car
      000087C4  _Init_Tim2                         se8r01_receive_car
      000087FF  _main                              se8r01_receive_car
-     000089F6  __mulint                           _mulint
-     00008A4C  _memset                            _memset
+     00008A2F  __mulint                           _mulint
+     00008A85  _memset                            _memset
 ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-INITIALIZER                         00008A6B    0000005E =          94. bytes (REL,CON)
+INITIALIZER                         00008AA4    0000005E =          94. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
