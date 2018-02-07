@@ -613,13 +613,13 @@ int main () {
 	Init_Tim2 (); //pwm on pd4
         PD_DDR |= (1<<4);
 	PD_CR1 |= (1<<4);
-	PD_CR2 &= 0xFD;
+	PD_CR2 |= (1<<4);
 	
 	//pwm on pin PA3 -  J2 connector TIM2_CH3
 	
 	PA_DDR |= (1<<3);
 	PA_CR1 |= (1<<3);
-	PA_CR2 &= 0xFD;
+	PA_CR2 |= (1<<4);
 	SE8R01_Init();
 	UARTPrintF("timer initialised = \n\r");
 
@@ -629,17 +629,17 @@ int main () {
 	//PB5
 
 
-	PB_DDR = (1 << 4) | (1 << 5);  // output mode
-	PB_CR1 = (1 << 4) | (1 << 5);  // push-pull
-	PB_CR2 = (1 << 4) | (1 << 5);  // up to 10MHz speed
+	PB_DDR |= (1 << 4) | (1 << 5);  // output mode
+	PB_CR1 |= (1 << 4) | (1 << 5);  // push-pull
+	PB_CR2 |= (1 << 4) | (1 << 5);  // up to 10MHz speed
 
 
 	//PA1   (connector J2)  
 	//PA2
 
-	PA_DDR = (1 << 1) | (1 << 2);  // output mode
-	PA_CR1 = (1 << 1) | (1 << 2);  // push-pull
-	PA_CR2 = (1 << 1) | (1 << 2);  // up to 10MHz speed
+	PA_DDR |= (1 << 1) | (1 << 2);  // output mode
+	PA_CR1 |= (1 << 1) | (1 << 2);  // push-pull
+	PA_CR2 |= (1 << 1) | (1 << 2);  // up to 10MHz speed
 
 
 	// PB4 is connected to PWMA  it is high for full power  (connector J3)
