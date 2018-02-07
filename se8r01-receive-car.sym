@@ -13,23 +13,25 @@ Symbol Table
   2 _ADDRESS3                                                      000013 GR
   2 _ADDRESS4                                                      000014 GR
   2 _ADDRESS5                                                      000015 GR
-  8 _Init_Tim2                                                     000724 GR
+  8 _Init_Tim2                                                     000726 GR
   8 _InitializeSPI                                                 00011C GR
   8 _InitializeSystemClock                                         000144 GR
-  8 _InitializeUART                                                00023C GR
-  8 _SE8R01_Analog_Init                                            0004C2 GR
-  8 _SE8R01_Calibration                                            0002F6 GR
+  8 _InitializeUART                                                00023E GR
+  8 _SE8R01_Analog_Init                                            0004C4 GR
+  8 _SE8R01_Calibration                                            0002F8 GR
   2 _SE8R01_DR_1M                                                  000002 GR
   2 _SE8R01_DR_2M                                                  000000 GR
   2 _SE8R01_DR_500K                                                000004 GR
-  8 _SE8R01_Init                                                   00063E GR
+  8 _SE8R01_Init                                                   000640 GR
   2 _TX_ADDRESS                                                    00000E GR
   8 _UARTPrintF                                                    0001D9 GR
-  8 ___str_0                                                       00094E R
-  8 ___str_1                                                       00095D R
-  8 ___str_2                                                       000969 R
-  8 ___str_3                                                       000975 R
-  8 ___str_4                                                       00098C R
+  8 ___str_0                                                       000982 R
+  8 ___str_1                                                       000994 R
+  8 ___str_2                                                       0009A6 R
+  8 ___str_3                                                       0009B5 R
+  8 ___str_4                                                       0009C1 R
+  8 ___str_5                                                       0009CD R
+  8 ___str_6                                                       0009E4 R
   5 __interrupt_vect                                               000000 R
     __mulint                                                       ****** GX
   6 __sdcc_gs_init_startup                                         000000 R
@@ -56,13 +58,13 @@ Symbol Table
   8 _delay                                                         00018E GR
   8 _delayTenMicro                                                 000000 GR
   1 _gtemp                                                         000000 GR
-  8 _init_io                                                       0002B5 GR
-  8 _main                                                          00075F GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
+  8 _init_io                                                       0002B7 GR
+  8 _main                                                          000794 GR
     _memset                                                        ****** GX
   1 _myData_pip4                                                   00000A GR
   1 _myData_pip5                                                   000005 GR
@@ -72,7 +74,7 @@ Symbol Table
   8 _print_UCHAR_hex                                               0001F0 GR
   8 _read_spi_buf                                                  0000E0 GR
   8 _read_spi_reg                                                  00006A GR
-  8 _rf_switch_bank                                                0002D9 GR
+  8 _rf_switch_bank                                                0002DB GR
   2 _rx_buf                                                        00001E GR
   2 _signal_lv                                                     00000A GR
   2 _status                                                        00000D GR
@@ -87,6 +89,7 @@ Symbol Table
     s_INITIALIZED                                                  ****** GX
     s_INITIALIZER                                                  ****** GX
 
+
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 3.
 Hexadecimal [24-Bits]
 
@@ -100,7 +103,7 @@ Area Table
    5 HOME                                       size     83   flags    0
    6 GSINIT                                     size     1A   flags    0
    7 GSFINAL                                    size      3   flags    0
-   8 CODE                                       size    98F   flags    0
+   8 CODE                                       size    9E7   flags    0
    9 INITIALIZER                                size     5E   flags    0
    A CABS                                       size      0   flags    8
 

@@ -33,15 +33,8 @@
 #define OSS		3
 #define PC3		3
 #define PC4		4
-#define CSN		4
-#define CE		3
-#define BH1750_HRES2_ONETIME	0x23
-#define BH1750_POWERON		0x01
-#define MCP4725_CMD_WRITEDAC	0x40
-#define SI7021_READ_HUMIDITY	0xe5
-#define HMC5883L_CRA		0x00
-#define HMC5883L_CRB		0x01
-#define HMC5883L_MODE		0x02
+#define CSN		3  //jj
+#define CE		4
 typedef unsigned char UCHAR;
 void delayTenMicro (void) {
 	char a;
@@ -521,19 +514,7 @@ void SE8R01_Init()
 
 void Init_Tim2 ()
 { 
-	// pwm is not standard on pin PD2, but possible with setting option bytes 
-	//
-	// echo "00 00 ff 02 fd 00 ff 00 ff 00 ff" | xxd -r -p > factory_defaults.bin
-	// stm8flash -c stlinkv2 -p stm8s103f3 -s opt -w factory_defaults.bin
-	//
-	// It is possible to configure the AFR option byte to get channel 3 on PD2 also.
 	/*
-	 *
-	 *
-
-
-	 0x4803 AFR alternate function remapping (vierde en vijfde byte)
-
 http://www.icbase.com/File/PDF/STM/STM39221308.pdf
 
 
@@ -571,6 +552,7 @@ AFR1 Alternate function remapping option 1
 	// if decreased, duty cycle deminishes -- so from 0 to CCR3 is high, rest is low
 	TIM2_CCR3H =1000/256; //compare capture register value
 	TIM2_CCR3L =1000%256;
+	UARTPrintF("timer init 1 = \n\r");
 
 
 	//TIM2_IER 0x00 |=;
@@ -590,6 +572,7 @@ AFR1 Alternate function remapping option 1
 
 
 
+	UARTPrintF("timer init 2 = \n\r");
 
 	//	Start counting / update interrupt disabled;
 	TIM2_CR1 |=0x81;
@@ -625,9 +608,15 @@ int main () {
 	UARTPrintF("status = \n\r");
 	print_UCHAR_hex(readstatus);
 
-	//pwm op pin PA3 onderste van J2 connector TIM2_CH3
+	//pwm on pin PD4 -  left J4 connector TIM2_CH1
 
-	Init_Tim2 (); //pwm for led on pd2
+	Init_Tim2 (); //pwm on pd4
+        PD_DDR |= (1<<4);
+	PD_CR1 |= (1<<4);
+	PD_CR2 &= 0xFD;
+	
+	//pwm on pin PA3 -  J2 connector TIM2_CH3
+	
 	PA_DDR |= (1<<3);
 	PA_CR1 |= (1<<3);
 	PA_CR2 &= 0xFD;
@@ -653,9 +642,9 @@ int main () {
 	PA_CR2 = (1 << 1) | (1 << 2);  // up to 10MHz speed
 
 
-	// PB4 is connected to PWMA  it is high for full power 
+	// PB4 is connected to PWMA  it is high for full power  (connector J3)
 
-	PB_ODR |= 1 << 4;
+	//	PB_ODR |= 1 << 4; //only if pwm does not work jj
 
 	// PB5 is connected to STBY  it is high to activate motor
 

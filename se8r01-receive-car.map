@@ -44,12 +44,12 @@ CABS                                00000000    00000000 =           0. bytes (A
      00000083  l_HOME                          
      00000100  l_IRAM                          
      00000100  l_SSEG                          
-     00000A04  l_CODE                          
+     00000A5C  l_CODE                          
      00008000  s_HOME                          
      00008083  s_GSINIT                        
      0000809D  s_GSFINAL                       
      000080A0  s_CODE                          
-     00008AA4  s_INITIALIZER                   
+     00008AFC  s_INITIALIZER                   
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
@@ -151,7 +151,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                000080A0    00000A04 =        2564. bytes (REL,CON)
+CODE                                000080A0    00000A5C =        2652. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -166,22 +166,22 @@ CODE                                000080A0    00000A04 =        2564. bytes (R
      0000822E  _delay                             se8r01_receive_car
      00008279  _UARTPrintF                        se8r01_receive_car
      00008290  _print_UCHAR_hex                   se8r01_receive_car
-     000082DC  _InitializeUART                    se8r01_receive_car
-     00008355  _init_io                           se8r01_receive_car
-     00008379  _rf_switch_bank                    se8r01_receive_car
-     00008396  _SE8R01_Calibration                se8r01_receive_car
-     00008562  _SE8R01_Analog_Init                se8r01_receive_car
-     000086DE  _SE8R01_Init                       se8r01_receive_car
-     000087C4  _Init_Tim2                         se8r01_receive_car
-     000087FF  _main                              se8r01_receive_car
-     00008A2F  __mulint                           _mulint
-     00008A85  _memset                            _memset
+     000082DE  _InitializeUART                    se8r01_receive_car
+     00008357  _init_io                           se8r01_receive_car
+     0000837B  _rf_switch_bank                    se8r01_receive_car
+     00008398  _SE8R01_Calibration                se8r01_receive_car
+     00008564  _SE8R01_Analog_Init                se8r01_receive_car
+     000086E0  _SE8R01_Init                       se8r01_receive_car
+     000087C6  _Init_Tim2                         se8r01_receive_car
+     00008834  _main                              se8r01_receive_car
+     00008A87  __mulint                           _mulint
+     00008ADD  _memset                            _memset
 ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-INITIALIZER                         00008AA4    0000005E =          94. bytes (REL,CON)
+INITIALIZER                         00008AFC    0000005E =          94. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
