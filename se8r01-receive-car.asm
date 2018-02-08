@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Jul 11 2014) (Linux)
-; This file was generated Wed Feb  7 10:05:44 2018
+; This file was generated Thu Feb  8 12:07:53 2018
 ;--------------------------------------------------------
 	.module se8r01_receive_car
 	.optsdcc -mstm8
@@ -243,7 +243,7 @@ _write_spi_reg:
 ;	se8r01-receive-car.c: 58: PC_ODR &= ~(1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xf7
+	and	a, #0xef
 	ld	(x), a
 ;	se8r01-receive-car.c: 59: ret = write_spi (reg);
 	ld	a, (0x04, sp)
@@ -274,7 +274,7 @@ _write_spi_reg:
 ;	se8r01-receive-car.c: 64: PC_ODR |= (1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x08
+	or	a, #0x10
 	ld	(x), a
 ;	se8r01-receive-car.c: 65: return (ret);
 	ld	a, (0x01, sp)
@@ -289,7 +289,7 @@ _read_spi_reg:
 ;	se8r01-receive-car.c: 69: PC_ODR &= ~(1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xf7
+	and	a, #0xef
 	ld	(x), a
 ;	se8r01-receive-car.c: 70: ret = write_spi (reg);
 	ld	a, (0x04, sp)
@@ -320,7 +320,7 @@ _read_spi_reg:
 ;	se8r01-receive-car.c: 75: PC_ODR |= (1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x08
+	or	a, #0x10
 	ld	(x), a
 ;	se8r01-receive-car.c: 76: return (ret);
 	ld	a, (0x01, sp)
@@ -335,7 +335,7 @@ _write_spi_buf:
 ;	se8r01-receive-car.c: 80: PC_ODR &= ~(1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xf7
+	and	a, #0xef
 	ld	(x), a
 ;	se8r01-receive-car.c: 81: ret = write_spi (reg);
 	ld	a, (0x05, sp)
@@ -365,7 +365,7 @@ _write_spi_buf:
 ;	se8r01-receive-car.c: 84: PC_ODR |= (1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x08
+	or	a, #0x10
 	ld	(x), a
 ;	se8r01-receive-car.c: 85: return (ret);
 	ld	a, (0x02, sp)
@@ -380,7 +380,7 @@ _read_spi_buf:
 ;	se8r01-receive-car.c: 89: PC_ODR &= ~(1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xf7
+	and	a, #0xef
 	ld	(x), a
 ;	se8r01-receive-car.c: 90: ret = write_spi (reg);
 	ld	a, (0x05, sp)
@@ -412,7 +412,7 @@ _read_spi_buf:
 ;	se8r01-receive-car.c: 93: PC_ODR |= (1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x08
+	or	a, #0x10
 	ld	(x), a
 ;	se8r01-receive-car.c: 94: return (ret);
 	ld	a, (0x01, sp)
@@ -448,7 +448,7 @@ _InitializeSPI:
 ;	se8r01-receive-car.c: 104: PC_ODR &= ~(1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xef
+	and	a, #0xf7
 	ld	(x), a
 	ret
 ;	se8r01-receive-car.c: 106: void InitializeSystemClock() {
@@ -762,12 +762,12 @@ _init_io:
 ;	se8r01-receive-car.c: 280: PC_ODR &= ~(1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xef
+	and	a, #0xf7
 	ld	(x), a
 ;	se8r01-receive-car.c: 282: PC_ODR |= (1 << CSN);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x08
+	or	a, #0x10
 	ld	(x), a
 	ret
 ;	se8r01-receive-car.c: 288: void rf_switch_bank(unsigned char bankindex)
@@ -1073,7 +1073,7 @@ _SE8R01_Calibration:
 ;	se8r01-receive-car.c: 385: PC_ODR |= (1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x10
+	or	a, #0x08
 	ld	(x), a
 ;	se8r01-receive-car.c: 386: delayTenMicro();
 	call	_delayTenMicro
@@ -1084,7 +1084,7 @@ _SE8R01_Calibration:
 ;	se8r01-receive-car.c: 389: PC_ODR &= ~(1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xef
+	and	a, #0xf7
 	ld	(x), a
 ;	se8r01-receive-car.c: 390: delay(50);                            // delay 50ms waitting for calibaration.
 	push	#0x32
@@ -1096,7 +1096,7 @@ _SE8R01_Calibration:
 ;	se8r01-receive-car.c: 396: PC_ODR |= (1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x10
+	or	a, #0x08
 	ld	(x), a
 ;	se8r01-receive-car.c: 397: delayTenMicro();
 	call	_delayTenMicro
@@ -1107,7 +1107,7 @@ _SE8R01_Calibration:
 ;	se8r01-receive-car.c: 400: PC_ODR &= ~(1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	and	a, #0xef
+	and	a, #0xf7
 	ld	(x), a
 ;	se8r01-receive-car.c: 401: delay(50);                            // delay 50ms waitting for calibaration.
 	push	#0x32
@@ -1525,7 +1525,7 @@ _SE8R01_Init:
 ;	se8r01-receive-car.c: 510: PC_ODR |= (1 << CE);
 	ldw	x, #0x500a
 	ld	a, (x)
-	or	a, #0x10
+	or	a, #0x08
 	ld	(x), a
 	addw	sp, #5
 	ret
@@ -1534,87 +1534,87 @@ _SE8R01_Init:
 ;	 function Init_Tim2
 ;	-----------------------------------------
 _Init_Tim2:
-;	se8r01-receive-car.c: 551: TIM2_CCMR3 |=0X70;//Set the timer 2 / three channel three (PD2) output mode
+;	se8r01-receive-car.c: 539: TIM2_CCMR3 |=0X70;//Set the timer 2 / three channel three (PD2) output mode
 	ldw	x, #0x5309
 	ld	a, (x)
 	or	a, #0x70
 	ld	(x), a
-;	se8r01-receive-car.c: 552: TIM2_CCMR3 |=0X04;//Comparison of 3 pre load / / output enable
+;	se8r01-receive-car.c: 540: TIM2_CCMR3 |=0X04;//Comparison of 3 pre load / / output enable
 	ldw	x, #0x5309
 	ld	a, (x)
 	or	a, #0x04
 	ld	(x), a
-;	se8r01-receive-car.c: 554: TIM2_CCER2 |=0x03;//  Channel 3 enable, active low output configuration
+;	se8r01-receive-car.c: 542: TIM2_CCER2 |=0x03;//  Channel 3 enable, active low output configuration
 	ldw	x, #0x530b
 	ld	a, (x)
 	or	a, #0x03
 	ld	(x), a
-;	se8r01-receive-car.c: 556: TIM2_PSCR =0X04;// 16 Mhz/2^4 =  1Mhz  -- the prescaler is a 4 bit number!
+;	se8r01-receive-car.c: 544: TIM2_PSCR =0X04;// 16 Mhz/2^4 =  1Mhz  -- the prescaler is a 4 bit number!
 	ldw	x, #0x530e
 	ld	a, #0x04
 	ld	(x), a
-;	se8r01-receive-car.c: 560: TIM2_ARRH =20000/256; // auto reload register
+;	se8r01-receive-car.c: 548: TIM2_ARRH =20000/256; // auto reload register
 	ldw	x, #0x530f
 	ld	a, #0x4e
 	ld	(x), a
-;	se8r01-receive-car.c: 561: TIM2_ARRL =20000%256; // 1000 Khz/20000 is 50 events per second 
+;	se8r01-receive-car.c: 549: TIM2_ARRL =20000%256; // 1000 Khz/20000 is 50 events per second 
 	ldw	x, #0x5310
 	ld	a, #0x20
 	ld	(x), a
-;	se8r01-receive-car.c: 565: TIM2_CCR3H =1000/256; //compare capture register value
+;	se8r01-receive-car.c: 553: TIM2_CCR3H =1000/256; //compare capture register value
 	ldw	x, #0x5315
 	ld	a, #0x03
 	ld	(x), a
-;	se8r01-receive-car.c: 566: TIM2_CCR3L =1000%256;
+;	se8r01-receive-car.c: 554: TIM2_CCR3L =1000%256;
 	ldw	x, #0x5316
 	ld	a, #0xe8
 	ld	(x), a
-;	se8r01-receive-car.c: 567: UARTPrintF("timer init 1 = \n\r");
+;	se8r01-receive-car.c: 555: UARTPrintF("timer init 1 = \n\r");
 	ldw	x, #___str_0+0
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
-;	se8r01-receive-car.c: 576: TIM2_CCMR1 |=0X70;//Set the timer 2 / channel 1 output
+;	se8r01-receive-car.c: 564: TIM2_CCMR1 |=0X70;//Set the timer 2 / channel 1 output
 	ldw	x, #0x5307
 	ld	a, (x)
 	or	a, #0x70
 	ld	(x), a
-;	se8r01-receive-car.c: 577: TIM2_CCMR1 |=0X04;//Comparison of 3 pre load / / output enable
+;	se8r01-receive-car.c: 565: TIM2_CCMR1 |=0X04;//Comparison of 3 pre load / / output enable
 	ldw	x, #0x5307
 	ld	a, (x)
 	or	a, #0x04
 	ld	(x), a
-;	se8r01-receive-car.c: 578: TIM2_CCER1 |=0x03;//  Channel 3 enable, active low output configuration
+;	se8r01-receive-car.c: 566: TIM2_CCER1 |=0x03;//  Channel 1 enable, active low output configuration
 	ldw	x, #0x530a
 	ld	a, (x)
 	or	a, #0x03
 	ld	(x), a
-;	se8r01-receive-car.c: 582: TIM2_CCR3H =10000/256; //compare capture register value
-	ldw	x, #0x5315
+;	se8r01-receive-car.c: 570: TIM2_CCR1H =10000/256; //compare capture register value for channel 1
+	ldw	x, #0x5311
 	ld	a, #0x27
 	ld	(x), a
-;	se8r01-receive-car.c: 583: TIM2_CCR3L =10000%256;
-	ldw	x, #0x5316
+;	se8r01-receive-car.c: 571: TIM2_CCR1L =10000%256;
+	ldw	x, #0x5312
 	ld	a, #0x10
 	ld	(x), a
-;	se8r01-receive-car.c: 587: UARTPrintF("timer init 2 = \n\r");
+;	se8r01-receive-car.c: 575: UARTPrintF("timer init 2 = \n\r");
 	ldw	x, #___str_1+0
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
-;	se8r01-receive-car.c: 590: TIM2_CR1 |=0x81;
+;	se8r01-receive-car.c: 578: TIM2_CR1 |=0x81;
 	ldw	x, #0x5300
 	ld	a, (x)
 	or	a, #0x81
 	ld	(x), a
 	ret
-;	se8r01-receive-car.c: 596: int main () {
+;	se8r01-receive-car.c: 584: int main () {
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
 	sub	sp, #51
-;	se8r01-receive-car.c: 598: UCHAR rx_addr_p1[]  = { 0xd2, 0xf0, 0xf0, 0xf0, 0xf0 };
+;	se8r01-receive-car.c: 586: UCHAR rx_addr_p1[]  = { 0xd2, 0xf0, 0xf0, 0xf0, 0xf0 };
 	ldw	y, sp
 	addw	y, #7
 	ld	a, #0xd2
@@ -1634,7 +1634,7 @@ _main:
 	ldw	x, y
 	ld	a, #0xf0
 	ld	(0x0004, x), a
-;	se8r01-receive-car.c: 599: UCHAR tx_addr[]     = { 0xe1, 0xf0, 0xf0, 0xf0, 0xf0 };
+;	se8r01-receive-car.c: 587: UCHAR tx_addr[]     = { 0xe1, 0xf0, 0xf0, 0xf0, 0xf0 };
 	ldw	y, sp
 	addw	y, #45
 	ld	a, #0xe1
@@ -1655,18 +1655,18 @@ _main:
 	addw	x, #0x0004
 	ld	a, #0xf0
 	ld	(x), a
-;	se8r01-receive-car.c: 604: InitializeSystemClock();
+;	se8r01-receive-car.c: 592: InitializeSystemClock();
 	call	_InitializeSystemClock
-;	se8r01-receive-car.c: 605: InitializeUART();
+;	se8r01-receive-car.c: 593: InitializeUART();
 	call	_InitializeUART
-;	se8r01-receive-car.c: 607: InitializeSPI ();
+;	se8r01-receive-car.c: 595: InitializeSPI ();
 	call	_InitializeSPI
-;	se8r01-receive-car.c: 609: UARTPrintF("start debug \n\r");
+;	se8r01-receive-car.c: 597: UARTPrintF("start debug \n\r");
 	ldw	x, #___str_2+0
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
-;	se8r01-receive-car.c: 611: memset (tx_payload, 0, sizeof(tx_payload));
+;	se8r01-receive-car.c: 599: memset (tx_payload, 0, sizeof(tx_payload));
 	ldw	x, sp
 	addw	x, #12
 	push	#0x21
@@ -1676,45 +1676,75 @@ _main:
 	pushw	x
 	call	_memset
 	addw	sp, #6
-;	se8r01-receive-car.c: 614: init_io();                        // Initialize IO port
+;	se8r01-receive-car.c: 602: init_io();    // Initialize IO port
 	call	_init_io
-;	se8r01-receive-car.c: 615: write_spi_reg(FLUSH_RX,0); // receive data 
+;	se8r01-receive-car.c: 603: write_spi_reg(FLUSH_RX,0); // receive data 
 	push	#0x00
 	push	#0xe2
 	call	_write_spi_reg
 	addw	sp, #2
-;	se8r01-receive-car.c: 616: readstatus = read_spi_reg(CONFIG);
+;	se8r01-receive-car.c: 604: readstatus = read_spi_reg(CONFIG);
 	push	#0x00
 	call	_read_spi_reg
 	addw	sp, #1
-;	se8r01-receive-car.c: 617: UARTPrintF("config = \n\r");
+;	se8r01-receive-car.c: 605: UARTPrintF("config = \n\r");
 	ldw	x, #___str_3+0
 	push	a
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
 	pop	a
-;	se8r01-receive-car.c: 618: print_UCHAR_hex(readstatus);
+;	se8r01-receive-car.c: 606: print_UCHAR_hex(readstatus);
 	push	a
 	call	_print_UCHAR_hex
 	pop	a
-;	se8r01-receive-car.c: 619: readstatus = read_spi_reg(STATUS);
+;	se8r01-receive-car.c: 607: readstatus = read_spi_reg(STATUS);
 	push	#0x07
 	call	_read_spi_reg
 	addw	sp, #1
-;	se8r01-receive-car.c: 620: UARTPrintF("status = \n\r");
+;	se8r01-receive-car.c: 608: UARTPrintF("status = \n\r");
 	ldw	x, #___str_4+0
 	push	a
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
 	pop	a
-;	se8r01-receive-car.c: 621: print_UCHAR_hex(readstatus);
+;	se8r01-receive-car.c: 609: print_UCHAR_hex(readstatus);
 	push	a
 	call	_print_UCHAR_hex
 	pop	a
-;	se8r01-receive-car.c: 625: Init_Tim2 (); //pwm for led on pd2
+;	se8r01-receive-car.c: 613: PD_DDR |= (1 << 2) ; // output mode
+	ldw	x, #0x5011
+	ld	a, (x)
+	or	a, #0x04
+	ld	(x), a
+;	se8r01-receive-car.c: 614: PD_CR1 |= (1 << 2) ; // push-pull
+	ldw	x, #0x5012
+	ld	a, (x)
+	or	a, #0x04
+	ld	(x), a
+;	se8r01-receive-car.c: 615: PD_ODR &= ~(1 << 2);
+	ldw	x, #0x500f
+	ld	a, (x)
+	and	a, #0xfb
+	ld	(x), a
+;	se8r01-receive-car.c: 619: Init_Tim2 (); //pwm on pd4
 	call	_Init_Tim2
+;	se8r01-receive-car.c: 620: PD_DDR |= (1<<4);
+	ldw	x, #0x5011
+	ld	a, (x)
+	or	a, #0x10
+	ld	(x), a
+;	se8r01-receive-car.c: 621: PD_CR1 |= (1<<4);
+	ldw	x, #0x5012
+	ld	a, (x)
+	or	a, #0x10
+	ld	(x), a
+;	se8r01-receive-car.c: 622: PD_CR2 |= (1<<4);
+	ldw	x, #0x5013
+	ld	a, (x)
+	or	a, #0x10
+	ld	(x), a
 ;	se8r01-receive-car.c: 626: PA_DDR |= (1<<3);
 	ldw	x, #0x5002
 	ld	a, (x)
@@ -1725,44 +1755,47 @@ _main:
 	ld	a, (x)
 	or	a, #0x08
 	ld	(x), a
-;	se8r01-receive-car.c: 628: PA_CR2 &= 0xFD;
+;	se8r01-receive-car.c: 628: PA_CR2 |= (1<<4);
 	ldw	x, #0x5004
 	ld	a, (x)
-	and	a, #0xfd
+	or	a, #0x10
 	ld	(x), a
+;	se8r01-receive-car.c: 629: SE8R01_Init();
+	call	_SE8R01_Init
 ;	se8r01-receive-car.c: 630: UARTPrintF("timer initialised = \n\r");
 	ldw	x, #___str_5+0
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
-;	se8r01-receive-car.c: 638: PB_DDR = (1 << 4) | (1 << 5);  // output mode
+;	se8r01-receive-car.c: 638: PB_DDR |= (1 << 4) | (1 << 5);  // output mode
 	ldw	x, #0x5007
-	ld	a, #0x30
-	ld	(x), a
-;	se8r01-receive-car.c: 639: PB_CR1 = (1 << 4) | (1 << 5);  // push-pull
-	ldw	x, #0x5008
-	ld	a, #0x30
-	ld	(x), a
-;	se8r01-receive-car.c: 640: PB_CR2 = (1 << 4) | (1 << 5);  // up to 10MHz speed
-	ldw	x, #0x5009
-	ld	a, #0x30
-	ld	(x), a
-;	se8r01-receive-car.c: 646: PA_DDR = (1 << 1) | (1 << 2);  // output mode
-	ldw	x, #0x5002
-	ld	a, #0x06
-	ld	(x), a
-;	se8r01-receive-car.c: 647: PA_CR1 = (1 << 1) | (1 << 2);  // push-pull
-	ldw	x, #0x5003
-	ld	a, #0x06
-	ld	(x), a
-;	se8r01-receive-car.c: 648: PA_CR2 = (1 << 1) | (1 << 2);  // up to 10MHz speed
-	ldw	x, #0x5004
-	ld	a, #0x06
-	ld	(x), a
-;	se8r01-receive-car.c: 653: PB_ODR |= 1 << 4;
-	ldw	x, #0x5005
 	ld	a, (x)
-	or	a, #0x10
+	or	a, #0x30
+	ld	(x), a
+;	se8r01-receive-car.c: 639: PB_CR1 |= (1 << 4) | (1 << 5);  // push-pull
+	ldw	x, #0x5008
+	ld	a, (x)
+	or	a, #0x30
+	ld	(x), a
+;	se8r01-receive-car.c: 640: PB_CR2 |= (1 << 4) | (1 << 5);  // up to 10MHz speed
+	ldw	x, #0x5009
+	ld	a, (x)
+	or	a, #0x30
+	ld	(x), a
+;	se8r01-receive-car.c: 646: PA_DDR |= (1 << 1) | (1 << 2);  // output mode
+	ldw	x, #0x5002
+	ld	a, (x)
+	or	a, #0x06
+	ld	(x), a
+;	se8r01-receive-car.c: 647: PA_CR1 |= (1 << 1) | (1 << 2);  // push-pull
+	ldw	x, #0x5003
+	ld	a, (x)
+	or	a, #0x06
+	ld	(x), a
+;	se8r01-receive-car.c: 648: PA_CR2 |= (1 << 1) | (1 << 2);  // up to 10MHz speed
+	ldw	x, #0x5004
+	ld	a, (x)
+	or	a, #0x06
 	ld	(x), a
 ;	se8r01-receive-car.c: 657: PB_ODR |= 1 << 5;
 	ldw	x, #0x5005
@@ -1776,73 +1809,72 @@ _main:
 	ld	(x), a
 ;	se8r01-receive-car.c: 668: while (1) {
 00110$:
-;	se8r01-receive-car.c: 670: TIM2_CCR3H =1000/256; //compare capture register value
-	ldw	x, #0x5315
-	ld	a, #0x03
-	ld	(x), a
-;	se8r01-receive-car.c: 671: TIM2_CCR3L =1000%256;
-	ldw	x, #0x5316
-	ld	a, #0xe8
-	ld	(x), a
-;	se8r01-receive-car.c: 672: delay(1000);
+;	se8r01-receive-car.c: 673: delay(1000);
 	push	#0xe8
 	push	#0x03
 	call	_delay
 	addw	sp, #2
-;	se8r01-receive-car.c: 674: TIM2_CCR3H =2000/256; //compare capture register value
-	ldw	x, #0x5315
-	ld	a, #0x07
+;	se8r01-receive-car.c: 678: PD_ODR &= ~(1 << 2); //blink LED
+	ldw	x, #0x500f
+	ld	a, (x)
+	and	a, #0xfb
 	ld	(x), a
-;	se8r01-receive-car.c: 675: TIM2_CCR3L =2000%256;
-	ldw	x, #0x5316
-	ld	a, #0xd0
-	ld	(x), a
-;	se8r01-receive-car.c: 676: delay(1000);
-	push	#0xe8
-	push	#0x03
+;	se8r01-receive-car.c: 679: delay(500);
+	push	#0xf4
+	push	#0x01
 	call	_delay
 	addw	sp, #2
-;	se8r01-receive-car.c: 679: if ((PD_IDR & (1 << 3))==0) //input low
+;	se8r01-receive-car.c: 681: PD_ODR |= 1 << 2; //blink LED
+	ldw	x, #0x500f
+	ld	a, (x)
+	or	a, #0x04
+	ld	(x), a
+;	se8r01-receive-car.c: 682: delay(500);
+	push	#0xf4
+	push	#0x01
+	call	_delay
+	addw	sp, #2
+;	se8r01-receive-car.c: 683: if ((PD_IDR & (1 << 3))==0) //input low
 	ldw	x, #0x5010
 	ld	a, (x)
 	bcp	a, #0x08
 	jreq	00170$
 	jp	00105$
 00170$:
-;	se8r01-receive-car.c: 683: delay(240);
+;	se8r01-receive-car.c: 687: delay(240);
 	push	#0xf0
 	push	#0x00
 	call	_delay
 	addw	sp, #2
-;	se8r01-receive-car.c: 684: signal_lv=read_spi_reg(iRF_BANK0_RPD);
+;	se8r01-receive-car.c: 688: signal_lv=read_spi_reg(iRF_BANK0_RPD);
 	push	#0x09
 	call	_read_spi_reg
 	addw	sp, #1
 	ld	_signal_lv+0, a
-;	se8r01-receive-car.c: 685: status = read_spi_reg(STATUS);
+;	se8r01-receive-car.c: 689: status = read_spi_reg(STATUS);
 	push	#0x07
 	call	_read_spi_reg
 	addw	sp, #1
 	ld	_status+0, a
-;	se8r01-receive-car.c: 687: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
+;	se8r01-receive-car.c: 691: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
 	btjt	_status+0, #6, 00171$
 	jra	00103$
 00171$:
-;	se8r01-receive-car.c: 690: pip= (status & 0b00001110)>>1;
+;	se8r01-receive-car.c: 694: pip= (status & 0b00001110)>>1;
 	ld	a, _status+0
 	and	a, #0x0e
 	srl	a
 	clrw	x
 	ld	xl, a
 	ldw	_pip+0, x
-;	se8r01-receive-car.c: 691: pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
+;	se8r01-receive-car.c: 695: pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
 	push	#0x60
 	call	_read_spi_reg
 	addw	sp, #1
 	clrw	x
 	ld	xl, a
 	ldw	_pload_width_now+0, x
-;	se8r01-receive-car.c: 692: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
+;	se8r01-receive-car.c: 696: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
 	ldw	x, #_rx_buf+0
 	ldw	(0x32, sp), x
 	ldw	x, (0x32, sp)
@@ -1851,18 +1883,18 @@ _main:
 	push	#0x61
 	call	_read_spi_buf
 	addw	sp, #4
-;	se8r01-receive-car.c: 693: write_spi_reg(FLUSH_RX,0);
+;	se8r01-receive-car.c: 697: write_spi_reg(FLUSH_RX,0);
 	push	#0x00
 	push	#0xe2
 	call	_write_spi_reg
 	addw	sp, #2
-;	se8r01-receive-car.c: 695: newdata=1;
+;	se8r01-receive-car.c: 699: newdata=1;
 	mov	_newdata+1, #0x01
 	clr	_newdata+0
-;	se8r01-receive-car.c: 696: for (teller=0;teller<32;++teller)
+;	se8r01-receive-car.c: 700: for (teller=0;teller<32;++teller)
 	clrw	x
 00112$:
-;	se8r01-receive-car.c: 697: print_UCHAR_hex (rx_buf[teller]);
+;	se8r01-receive-car.c: 701: print_UCHAR_hex (rx_buf[teller]);
 	ldw	y, x
 	addw	y, (0x32, sp)
 	ld	a, (y)
@@ -1871,23 +1903,23 @@ _main:
 	call	_print_UCHAR_hex
 	pop	a
 	popw	x
-;	se8r01-receive-car.c: 696: for (teller=0;teller<32;++teller)
+;	se8r01-receive-car.c: 700: for (teller=0;teller<32;++teller)
 	incw	x
 	cpw	x, #0x0020
 	jrslt	00112$
-;	se8r01-receive-car.c: 698: UARTPrintF("\n\r");
+;	se8r01-receive-car.c: 702: UARTPrintF("\n\r");
 	ldw	x, #___str_6+0
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
 00103$:
-;	se8r01-receive-car.c: 701: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
+;	se8r01-receive-car.c: 705: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
 	push	_status+0
 	push	#0x27
 	call	_write_spi_reg
 	addw	sp, #2
 00105$:
-;	se8r01-receive-car.c: 706: for (x1 = 0; x1 < 50; ++x1)
+;	se8r01-receive-car.c: 710: for (x1 = 0; x1 < 50; ++x1)
 	clrw	x
 	ldw	(0x05, sp), x
 00121$:
@@ -1896,35 +1928,35 @@ _main:
 	jrslt	00173$
 	jp	00110$
 00173$:
-;	se8r01-receive-car.c: 707: for (y1 = 0; y1 < 50; ++y1)
+;	se8r01-receive-car.c: 711: for (y1 = 0; y1 < 50; ++y1)
 	clrw	x
 	ldw	(0x03, sp), x
 00118$:
 	ldw	x, (0x03, sp)
 	cpw	x, #0x0032
 	jrsge	00122$
-;	se8r01-receive-car.c: 708: for (z1 = 0; z1 < 50; ++z1)
+;	se8r01-receive-car.c: 712: for (z1 = 0; z1 < 50; ++z1)
 	clrw	x
 	ldw	(0x01, sp), x
 00115$:
 	ldw	x, (0x01, sp)
 	cpw	x, #0x0032
 	jrsge	00119$
-;	se8r01-receive-car.c: 709: __asm__("nop");
+;	se8r01-receive-car.c: 713: __asm__("nop");
 	nop
-;	se8r01-receive-car.c: 708: for (z1 = 0; z1 < 50; ++z1)
+;	se8r01-receive-car.c: 712: for (z1 = 0; z1 < 50; ++z1)
 	ldw	x, (0x01, sp)
 	incw	x
 	ldw	(0x01, sp), x
 	jra	00115$
 00119$:
-;	se8r01-receive-car.c: 707: for (y1 = 0; y1 < 50; ++y1)
+;	se8r01-receive-car.c: 711: for (y1 = 0; y1 < 50; ++y1)
 	ldw	x, (0x03, sp)
 	incw	x
 	ldw	(0x03, sp), x
 	jra	00118$
 00122$:
-;	se8r01-receive-car.c: 706: for (x1 = 0; x1 < 50; ++x1)
+;	se8r01-receive-car.c: 710: for (x1 = 0; x1 < 50; ++x1)
 	ldw	x, (0x05, sp)
 	incw	x
 	ldw	(0x05, sp), x

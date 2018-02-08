@@ -33,8 +33,8 @@
 #define OSS		3
 #define PC3		3
 #define PC4		4
-#define CSN		3  //jj
-#define CE		4
+#define CSN		4  //jj
+#define CE		3
 typedef unsigned char UCHAR;
 void delayTenMicro (void) {
 	char a;
@@ -563,14 +563,14 @@ AFR1 Alternate function remapping option 1
 
 	TIM2_CCMR1 |=0X70;//Set the timer 2 / channel 1 output
 	TIM2_CCMR1 |=0X04;//Comparison of 3 pre load / / output enable
-	TIM2_CCER1 |=0x03;//  Channel 3 enable, active low output configuration
+	TIM2_CCER1 |=0x03;//  Channel 1 enable, active low output configuration
 
 
 	//should be 50 duty cycle 
-	TIM2_CCR3H =10000/256; //compare capture register value
-	TIM2_CCR3L =10000%256;
+	TIM2_CCR1H =10000/256; //compare capture register value for channel 1
+	TIM2_CCR1L =10000%256;
 
-
+//on analysis channel 1 of timer2 seems to be disturbed upon reception on the SPI bus
 
 	UARTPrintF("timer init 2 = \n\r");
 
@@ -599,7 +599,7 @@ int main () {
 	memset (tx_payload, 0, sizeof(tx_payload));
 
 
-	init_io();                        // Initialize IO port
+	init_io();    // Initialize IO port
 	write_spi_reg(FLUSH_RX,0); // receive data 
 	readstatus = read_spi_reg(CONFIG);
 	UARTPrintF("config = \n\r");
@@ -608,19 +608,25 @@ int main () {
 	UARTPrintF("status = \n\r");
 	print_UCHAR_hex(readstatus);
 
+	//blink LED on port PD2
+
+	PD_DDR |= (1 << 2) ; // output mode
+	PD_CR1 |= (1 << 2) ; // push-pull
+	PD_ODR &= ~(1 << 2);
+
 	//pwm on pin PD4 -  left J4 connector TIM2_CH1
 
 	Init_Tim2 (); //pwm on pd4
-        PD_DDR |= (1<<4);
+	PD_DDR |= (1<<4);
 	PD_CR1 |= (1<<4);
 	PD_CR2 |= (1<<4);
-	
+
 	//pwm on pin PA3 -  J2 connector TIM2_CH3
-	
+
 	PA_DDR |= (1<<3);
 	PA_CR1 |= (1<<3);
 	PA_CR2 |= (1<<4);
-	SE8R01_Init();
+		SE8R01_Init();
 	UARTPrintF("timer initialised = \n\r");
 
 	//test tb6612fng motordriver
@@ -628,10 +634,10 @@ int main () {
 	//PB4   (connector J3)
 	//PB5
 
-
-	PB_DDR |= (1 << 4) | (1 << 5);  // output mode
-	PB_CR1 |= (1 << 4) | (1 << 5);  // push-pull
-	PB_CR2 |= (1 << 4) | (1 << 5);  // up to 10MHz speed
+	
+	   PB_DDR |= (1 << 4) | (1 << 5);  // output mode
+	   PB_CR1 |= (1 << 4) | (1 << 5);  // push-pull
+	   PB_CR2 |= (1 << 4) | (1 << 5);  // up to 10MHz speed
 
 
 	//PA1   (connector J2)  
@@ -658,45 +664,49 @@ int main () {
 	// PA2 is connected to AIN2 direction reverse 
 
 	//PA_ODR |= 1 << 2;
-
+	
 	while (1) {
 		//change duty cycle to change servo
-		TIM2_CCR3H =1000/256; //compare capture register value
-		TIM2_CCR3L =1000%256;
-		delay(1000);
+		//		TIM2_CCR3H =1000/256; //compare capture register value
+		//		TIM2_CCR3L =1000%256;
+//	TIM2_CR1 |=0x81;
+				delay(1000);
 
-		TIM2_CCR3H =2000/256; //compare capture register value
-		TIM2_CCR3L =2000%256;
-		delay(1000);
+		//		TIM2_CCR3H =2000/256; //compare capture register value
+		//		TIM2_CCR3L =2000%256;
+//	TIM2_CR1 |=0x81;
+		PD_ODR &= ~(1 << 2); //blink LED
+		delay(500);
 
+		PD_ODR |= 1 << 2; //blink LED
+		delay(500);
+				if ((PD_IDR & (1 << 3))==0) //input low
 
-		if ((PD_IDR & (1 << 3))==0) //input low
-
-			//		if(digitalRead(IRQq)==LOW)
+		//		if(digitalRead(IRQq)==LOW)
 		{
-			delay(240);
-			signal_lv=read_spi_reg(iRF_BANK0_RPD);
-			status = read_spi_reg(STATUS);
+		delay(240);
+		signal_lv=read_spi_reg(iRF_BANK0_RPD);
+		status = read_spi_reg(STATUS);
 
-			if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
-			{
+		if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
+		{
 
-				pip= (status & 0b00001110)>>1;
-				pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
-				read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
-				write_spi_reg(FLUSH_RX,0);
-				//    print_pip();
-				newdata=1;
-				for (teller=0;teller<32;++teller)
-					print_UCHAR_hex (rx_buf[teller]);
-				UARTPrintF("\n\r");
-			}
+		pip= (status & 0b00001110)>>1;
+		pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
+		read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
+		write_spi_reg(FLUSH_RX,0);
+		//    print_pip();
+		newdata=1;
+		for (teller=0;teller<32;++teller)
+		print_UCHAR_hex (rx_buf[teller]);
+		UARTPrintF("\n\r");
+		}
 
-			write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
+		write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
 
 
 		}
-
+	
 		for (x1 = 0; x1 < 50; ++x1)
 			for (y1 = 0; y1 < 50; ++y1)
 				for (z1 = 0; z1 < 50; ++z1)
