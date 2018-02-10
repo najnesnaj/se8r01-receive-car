@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Jul 11 2014) (Linux)
-; This file was generated Sat Feb 10 11:30:09 2018
+; This file was generated Sat Feb 10 18:47:11 2018
 ;--------------------------------------------------------
 	.module se8r01_receive_car
 	.optsdcc -mstm8
@@ -1790,7 +1790,7 @@ _main:
 	or	a, #0x02
 	ld	(x), a
 ;	se8r01-receive-car.c: 668: while (1) {
-00110$:
+00113$:
 ;	se8r01-receive-car.c: 673: delay(1000);
 	push	#0xe8
 	push	#0x03
@@ -1815,9 +1815,9 @@ _main:
 	ldw	x, #0x5010
 	ld	a, (x)
 	bcp	a, #0x08
-	jreq	00170$
-	jp	00105$
-00170$:
+	jreq	00181$
+	jp	00108$
+00181$:
 ;	se8r01-receive-car.c: 687: delay(240);
 	push	#0xf0
 	push	#0x00
@@ -1834,9 +1834,9 @@ _main:
 	addw	sp, #1
 	ld	_status+0, a
 ;	se8r01-receive-car.c: 691: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
-	btjt	_status+0, #6, 00171$
+	btjt	_status+0, #6, 00182$
 	jra	00103$
-00171$:
+00182$:
 ;	se8r01-receive-car.c: 694: pip= (status & 0b00001110)>>1;
 	ld	a, _status+0
 	and	a, #0x0e
@@ -1853,8 +1853,8 @@ _main:
 	ldw	_pload_width_now+0, x
 ;	se8r01-receive-car.c: 696: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
 	ldw	x, #_rx_buf+0
-	ldw	(0x32, sp), x
-	ldw	x, (0x32, sp)
+	ldw	(0x3a, sp), x
+	ldw	x, (0x3a, sp)
 	push	#0x20
 	pushw	x
 	push	#0x61
@@ -1870,10 +1870,10 @@ _main:
 	clr	_newdata+0
 ;	se8r01-receive-car.c: 700: for (teller=0;teller<32;++teller)
 	clrw	x
-00112$:
+00115$:
 ;	se8r01-receive-car.c: 701: print_UCHAR_hex (rx_buf[teller]);
 	ldw	y, x
-	addw	y, (0x32, sp)
+	addw	y, (0x3a, sp)
 	ld	a, (y)
 	pushw	x
 	push	a
@@ -1883,17 +1883,30 @@ _main:
 ;	se8r01-receive-car.c: 700: for (teller=0;teller<32;++teller)
 	incw	x
 	cpw	x, #0x0020
-	jrslt	00112$
+	jrslt	00115$
 ;	se8r01-receive-car.c: 702: UARTPrintF("\n\r");
 	ldw	x, #___str_6+0
 	pushw	x
 	call	_UARTPrintF
 	addw	sp, #2
 00103$:
-;	se8r01-receive-car.c: 705: speed = (unsigned int)rx_buf[2] << 8 | (unsigned int)rx_buf[3];
+;	se8r01-receive-car.c: 705: if (rx_buf[0]==0xac && rx_buf[1]==0xcc) //the first two are a code to only accept these lines
 	ldw	x, #_rx_buf+0
-	ldw	(0x38, sp), x
-	ldw	x, (0x38, sp)
+	ldw	(0x3c, sp), x
+	ldw	x, (0x3c, sp)
+	ld	a, (x)
+	cp	a, #0xac
+	jreq	00186$
+	jp	00105$
+00186$:
+	ldw	x, (0x3c, sp)
+	ld	a, (0x1, x)
+	cp	a, #0xcc
+	jreq	00189$
+	jp	00105$
+00189$:
+;	se8r01-receive-car.c: 707: speed = (unsigned int)rx_buf[2] << 8 | (unsigned int)rx_buf[3];
+	ldw	x, (0x3c, sp)
 	ld	a, (0x2, x)
 	clrw	x
 	ld	xl, a
@@ -1905,48 +1918,46 @@ _main:
 	sllw	x
 	sllw	x
 	sllw	x
-	ldw	y, (0x38, sp)
+	ldw	y, (0x3c, sp)
 	ld	a, (0x3, y)
-	clr	(0x3c, sp)
+	clr	(0x32, sp)
 	pushw	x
 	or	a, (2, sp)
 	popw	x
 	ld	xl, a
 	ld	a, xh
-	or	a, (0x3c, sp)
+	or	a, (0x32, sp)
 	ld	xh, a
-;	se8r01-receive-car.c: 706: TIM2_CCR1H =speed*20/256; //compare capture register value for channel 1
+;	se8r01-receive-car.c: 708: TIM2_CCR1H =speed*20/256; //compare capture register value for channel 1
 	pushw	x
 	push	#0x14
 	push	#0x00
 	call	__mulint
 	addw	sp, #4
-	ldw	(0x3a, sp), x
+	ldw	(0x38, sp), x
 	push	#0x00
 	push	#0x01
-	ldw	x, (0x3c, sp)
+	ldw	x, (0x3a, sp)
 	pushw	x
 	call	__divsint
 	addw	sp, #4
 	ld	a, xl
 	ldw	x, #0x5311
 	ld	(x), a
-;	se8r01-receive-car.c: 707: TIM2_CCR1L =speed*20%256;
+;	se8r01-receive-car.c: 709: TIM2_CCR1L =speed*20%256;
 	push	#0x00
 	push	#0x01
-	ldw	x, (0x3c, sp)
+	ldw	x, (0x3a, sp)
 	pushw	x
 	call	__modsint
 	addw	sp, #4
 	ld	a, xl
 	ldw	x, #0x5312
 	ld	(x), a
-;	se8r01-receive-car.c: 710: angle = (unsigned int)rx_buf[4] << 8 | (unsigned int)rx_buf[5];
-	ldw	x, (0x38, sp)
+;	se8r01-receive-car.c: 712: angle = (unsigned int)rx_buf[4] << 8 | (unsigned int)rx_buf[5];
+	ldw	x, (0x3c, sp)
 	ld	a, (0x4, x)
-	rlwa	x
-	clr	a
-	rrwa	x
+	clrw	x
 	ld	xl, a
 	sllw	x
 	sllw	x
@@ -1956,7 +1967,7 @@ _main:
 	sllw	x
 	sllw	x
 	sllw	x
-	ldw	y, (0x38, sp)
+	ldw	y, (0x3c, sp)
 	ld	a, (0x5, y)
 	clr	(0x36, sp)
 	pushw	x
@@ -1966,7 +1977,7 @@ _main:
 	ld	a, xh
 	or	a, (0x36, sp)
 	ld	xh, a
-;	se8r01-receive-car.c: 711: TIM2_CCR3H =(1000+angle)/256; //compare capture register value
+;	se8r01-receive-car.c: 713: TIM2_CCR3H =(1000+angle)/256; //compare capture register value
 	addw	x, #0x03e8
 	ldw	(0x34, sp), x
 	push	#0x00
@@ -1978,7 +1989,7 @@ _main:
 	ld	a, xl
 	ldw	x, #0x5315
 	ld	(x), a
-;	se8r01-receive-car.c: 712: TIM2_CCR3L =(1000+angle)%256;
+;	se8r01-receive-car.c: 714: TIM2_CCR3L =(1000+angle)%256;
 	push	#0x00
 	push	#0x01
 	ldw	x, (0x36, sp)
@@ -1988,54 +1999,55 @@ _main:
 	ld	a, xl
 	ldw	x, #0x5316
 	ld	(x), a
-;	se8r01-receive-car.c: 714: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
+00105$:
+;	se8r01-receive-car.c: 716: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
 	push	_status+0
 	push	#0x27
 	call	_write_spi_reg
 	addw	sp, #2
-00105$:
-;	se8r01-receive-car.c: 719: for (x1 = 0; x1 < 50; ++x1)
+00108$:
+;	se8r01-receive-car.c: 721: for (x1 = 0; x1 < 50; ++x1)
 	clrw	x
 	ldw	(0x30, sp), x
-00121$:
+00124$:
 	ldw	x, (0x30, sp)
 	cpw	x, #0x0032
-	jrslt	00173$
-	jp	00110$
-00173$:
-;	se8r01-receive-car.c: 720: for (y1 = 0; y1 < 50; ++y1)
+	jrslt	00190$
+	jp	00113$
+00190$:
+;	se8r01-receive-car.c: 722: for (y1 = 0; y1 < 50; ++y1)
 	clrw	x
 	ldw	(0x2e, sp), x
-00118$:
+00121$:
 	ldw	x, (0x2e, sp)
+	cpw	x, #0x0032
+	jrsge	00125$
+;	se8r01-receive-car.c: 723: for (z1 = 0; z1 < 50; ++z1)
+	clrw	x
+	ldw	(0x2c, sp), x
+00118$:
+	ldw	x, (0x2c, sp)
 	cpw	x, #0x0032
 	jrsge	00122$
-;	se8r01-receive-car.c: 721: for (z1 = 0; z1 < 50; ++z1)
-	clrw	x
-	ldw	(0x2c, sp), x
-00115$:
-	ldw	x, (0x2c, sp)
-	cpw	x, #0x0032
-	jrsge	00119$
-;	se8r01-receive-car.c: 722: __asm__("nop");
+;	se8r01-receive-car.c: 724: __asm__("nop");
 	nop
-;	se8r01-receive-car.c: 721: for (z1 = 0; z1 < 50; ++z1)
+;	se8r01-receive-car.c: 723: for (z1 = 0; z1 < 50; ++z1)
 	ldw	x, (0x2c, sp)
 	incw	x
 	ldw	(0x2c, sp), x
-	jra	00115$
-00119$:
-;	se8r01-receive-car.c: 720: for (y1 = 0; y1 < 50; ++y1)
+	jra	00118$
+00122$:
+;	se8r01-receive-car.c: 722: for (y1 = 0; y1 < 50; ++y1)
 	ldw	x, (0x2e, sp)
 	incw	x
 	ldw	(0x2e, sp), x
-	jra	00118$
-00122$:
-;	se8r01-receive-car.c: 719: for (x1 = 0; x1 < 50; ++x1)
+	jra	00121$
+00125$:
+;	se8r01-receive-car.c: 721: for (x1 = 0; x1 < 50; ++x1)
 	ldw	x, (0x30, sp)
 	incw	x
 	ldw	(0x30, sp), x
-	jra	00121$
+	jra	00124$
 	addw	sp, #61
 	ret
 	.area CODE

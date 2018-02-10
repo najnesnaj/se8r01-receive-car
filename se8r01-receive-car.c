@@ -10,7 +10,21 @@
    6 MOSI    PC6
    7 MISO    PC7
    8 IRQ     PD3
-   */
+
+
+   6612FNG motorcontroller
+
+   PA1 AIN1 forward (connector J2)
+   PA2 AIN2 reverse
+   PD4 PWMA for motor speed connector J4
+   PB5 STBY activate motor (high on default) connector J3
+
+
+
+   PA3 TIM2_CH3 this is used to control servo with PWM 
+
+
+*/
 
 
 
@@ -271,9 +285,9 @@ struct dataStruct1{
 //**************************************************
 void init_io(void)
 { //PD3 is interrupt
-//	PD_DDR &= ~(1 << 3); // input mode
-//	PD_CR1 |= (1 << 3); // input with pull up 
-//	PD_CR2 |= (1 << 3); // interrupt enabled 
+	//	PD_DDR &= ~(1 << 3); // input mode
+	//	PD_CR1 |= (1 << 3); // input with pull up 
+	//	PD_CR2 |= (1 << 3); // interrupt enabled 
 	//	PD_ODR &= ~(1 << 3);
 	//  digitalWrite(IRQq, 0);
 	//PC_ODR |= (1 << CE);
@@ -561,16 +575,16 @@ AFR1 Alternate function remapping option 1
 	// init PD4 Timer2 Channel for PWM : connector J4
 	// this is for the electro motor control
 	TIM2_CCER1 =0x03;//  Channel 1 enable, active low output configuration
-TIM2_CCMR2 = 0x03;
+	TIM2_CCMR2 = 0x03;
 	TIM2_CCMR1 =0X70;//Set the timer 2 / channel 1 output
-//	TIM2_CCMR1 |=0X04;//Comparison of 3 pre load / / output enable
+	//	TIM2_CCMR1 |=0X04;//Comparison of 3 pre load / / output enable
 
 
 	//should be 50 duty cycle 
 	TIM2_CCR1H =10000/256; //compare capture register value for channel 1
 	TIM2_CCR1L =10000%256;
 
-//on analysis channel 1 of timer2 seems to be disturbed upon reception on the SPI bus
+	//on analysis channel 1 of timer2 seems to be disturbed upon reception on the SPI bus
 
 	UARTPrintF("timer init 2 = \n\r");
 
@@ -626,7 +640,8 @@ int main () {
 	PA_DDR |= (1<<3);
 	PA_CR1 |= (1<<3);
 	PA_CR2 |= (1<<4);
-		SE8R01_Init();
+
+	SE8R01_Init();
 	UARTPrintF("timer initialised = \n\r");
 
 	//test tb6612fng motordriver
@@ -634,10 +649,10 @@ int main () {
 	//PB4   (connector J3)
 	//PB5
 
-	
-	   PB_DDR |= (1 << 4) | (1 << 5);  // output mode
-	   PB_CR1 |= (1 << 4) | (1 << 5);  // push-pull
-	   PB_CR2 |= (1 << 4) | (1 << 5);  // up to 10MHz speed
+
+	PB_DDR |= (1 << 4) | (1 << 5);  // output mode
+	PB_CR1 |= (1 << 4) | (1 << 5);  // push-pull
+	PB_CR2 |= (1 << 4) | (1 << 5);  // up to 10MHz speed
 
 
 	//PA1   (connector J2)  
@@ -657,65 +672,70 @@ int main () {
 	PB_ODR |= 1 << 5;
 
 
-	// PA1 is connected to AIN1 direction forward
 
-	PA_ODR |= 1 << 1;
-
-	// PA2 is connected to AIN2 direction reverse 
-
-	//PA_ODR |= 1 << 2;
-	
 	while (1) {
 		//change duty cycle to change servo
 		//		TIM2_CCR3H =1000/256; //compare capture register value
 		//		TIM2_CCR3L =1000%256;
-//	TIM2_CR1 |=0x81;
-				delay(1000);
+		//	TIM2_CR1 |=0x81;
+		delay(1000);
 
 		//		TIM2_CCR3H =2000/256; //compare capture register value
 		//		TIM2_CCR3L =2000%256;
-//	TIM2_CR1 |=0x81;
+		//	TIM2_CR1 |=0x81;
 		PD_ODR &= ~(1 << 2); //blink LED
 		delay(500);
 
-//		PD_ODR |= 1 << 2; //blink LED
+		//		PD_ODR |= 1 << 2; //blink LED
 		delay(500);
-				if ((PD_IDR & (1 << 3))==0) //input low
+		if ((PD_IDR & (1 << 3))==0) //input low
 
-		//		if(digitalRead(IRQq)==LOW)
+			//		if(digitalRead(IRQq)==LOW)
 		{
-		delay(240);
-		signal_lv=read_spi_reg(iRF_BANK0_RPD);
-		status = read_spi_reg(STATUS);
+			delay(240);
+			signal_lv=read_spi_reg(iRF_BANK0_RPD);
+			status = read_spi_reg(STATUS);
 
-		if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
-		{
+			if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
+			{
 
-		pip= (status & 0b00001110)>>1;
-		pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
-		read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
-		write_spi_reg(FLUSH_RX,0);
-		//    print_pip();
-		newdata=1;
-		for (teller=0;teller<32;++teller)
-		print_UCHAR_hex (rx_buf[teller]);
-		UARTPrintF("\n\r");
+				pip= (status & 0b00001110)>>1;
+				pload_width_now=read_spi_reg(iRF_CMD_R_RX_PL_WID);
+				read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
+				write_spi_reg(FLUSH_RX,0);
+				//    print_pip();
+				newdata=1;
+				for (teller=0;teller<32;++teller)
+					print_UCHAR_hex (rx_buf[teller]);
+				UARTPrintF("\n\r");
+			}
+			//adapt pwm motor according to joystick
+			if (rx_buf[0]==0xac && rx_buf[1]==0xcc) //the first two are a code to only accept these lines in the transmitted lines to avoid errors
+			{
+				speed = (unsigned int)rx_buf[2] << 8 | (unsigned int)rx_buf[3];
+
+				if (speed > 0x0205) { //forward
+					PA_ODR &= ~(1 << 2);
+					PA_ODR |= 1 << 1;
+					TIM2_CCR1H =speed*20/256; //compare capture register value for channel 1
+					TIM2_CCR1L =speed*20%256;
+				}
+				if (speed < 0x0200) { //reverse
+					PA_ODR &= ~(1 << 1);
+					PA_ODR |= 1 << 2;
+					TIM2_CCR1H =(0x03ff-speed)*20/256; //compare capture register value for channel 1
+					TIM2_CCR1L =(0x03dd-speed)*20%256;
+				}
+
+				angle = (unsigned int)rx_buf[4] << 8 | (unsigned int)rx_buf[5]; //angle of servo motor
+				TIM2_CCR3H =(1000+angle)/256; //compare capture register value
+				TIM2_CCR3L =(1000+angle)%256;
+			}
+			write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
+
+
 		}
-//adapt pwm motor according to joystick
-speed = (unsigned int)rx_buf[2] << 8 | (unsigned int)rx_buf[3];
-	TIM2_CCR1H =speed*20/256; //compare capture register value for channel 1
-	TIM2_CCR1L =speed*20%256;
-//	TIM2_CCR1H =12000/256; //compare capture register value for channel 1
-//	TIM2_CCR1L =12000%256;
-angle = (unsigned int)rx_buf[4] << 8 | (unsigned int)rx_buf[5];
-	TIM2_CCR3H =(1000+angle)/256; //compare capture register value
-	TIM2_CCR3L =(1000+angle)%256;
 
-		write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
-
-
-		}
-	
 		for (x1 = 0; x1 < 50; ++x1)
 			for (y1 = 0; y1 < 50; ++y1)
 				for (z1 = 0; z1 < 50; ++z1)

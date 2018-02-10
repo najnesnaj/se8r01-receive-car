@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.4.0 #8981 (Jul 11 2014) (Linux)
-                                      4 ; This file was generated Sat Feb 10 11:30:09 2018
+                                      4 ; This file was generated Sat Feb 10 18:47:11 2018
                                       5 ;--------------------------------------------------------
                                       6 	.module se8r01_receive_car
                                       7 	.optsdcc -mstm8
@@ -1555,7 +1555,7 @@
       000741 A6 E8            [ 1] 1555 	ld	a, #0xe8
       000743 F7               [ 1] 1556 	ld	(x), a
                                    1557 ;	se8r01-receive-car.c: 555: UARTPrintF("timer init 1 = \n\r");
-      000744 AEr0Ar24         [ 2] 1558 	ldw	x, #___str_0+0
+      000744 AEr0Ar37         [ 2] 1558 	ldw	x, #___str_0+0
       000747 89               [ 2] 1559 	pushw	x
       000748 CDr01rD9         [ 4] 1560 	call	_UARTPrintF
       00074B 5B 02            [ 2] 1561 	addw	sp, #2
@@ -1580,7 +1580,7 @@
       000768 A6 10            [ 1] 1580 	ld	a, #0x10
       00076A F7               [ 1] 1581 	ld	(x), a
                                    1582 ;	se8r01-receive-car.c: 575: UARTPrintF("timer init 2 = \n\r");
-      00076B AEr0Ar36         [ 2] 1583 	ldw	x, #___str_1+0
+      00076B AEr0Ar49         [ 2] 1583 	ldw	x, #___str_1+0
       00076E 89               [ 2] 1584 	pushw	x
       00076F CDr01rD9         [ 4] 1585 	call	_UARTPrintF
       000772 5B 02            [ 2] 1586 	addw	sp, #2
@@ -1644,7 +1644,7 @@
                                    1644 ;	se8r01-receive-car.c: 595: InitializeSPI ();
       0007C4 CDr01r1C         [ 4] 1645 	call	_InitializeSPI
                                    1646 ;	se8r01-receive-car.c: 597: UARTPrintF("start debug \n\r");
-      0007C7 AEr0Ar48         [ 2] 1647 	ldw	x, #___str_2+0
+      0007C7 AEr0Ar5B         [ 2] 1647 	ldw	x, #___str_2+0
       0007CA 89               [ 2] 1648 	pushw	x
       0007CB CDr01rD9         [ 4] 1649 	call	_UARTPrintF
       0007CE 5B 02            [ 2] 1650 	addw	sp, #2
@@ -1670,7 +1670,7 @@
       0007EE CDr00r6A         [ 4] 1670 	call	_read_spi_reg
       0007F1 5B 01            [ 2] 1671 	addw	sp, #1
                                    1672 ;	se8r01-receive-car.c: 605: UARTPrintF("config = \n\r");
-      0007F3 AEr0Ar57         [ 2] 1673 	ldw	x, #___str_3+0
+      0007F3 AEr0Ar6A         [ 2] 1673 	ldw	x, #___str_3+0
       0007F6 88               [ 1] 1674 	push	a
       0007F7 89               [ 2] 1675 	pushw	x
       0007F8 CDr01rD9         [ 4] 1676 	call	_UARTPrintF
@@ -1685,7 +1685,7 @@
       000805 CDr00r6A         [ 4] 1685 	call	_read_spi_reg
       000808 5B 01            [ 2] 1686 	addw	sp, #1
                                    1687 ;	se8r01-receive-car.c: 608: UARTPrintF("status = \n\r");
-      00080A AEr0Ar63         [ 2] 1688 	ldw	x, #___str_4+0
+      00080A AEr0Ar76         [ 2] 1688 	ldw	x, #___str_4+0
       00080D 88               [ 1] 1689 	push	a
       00080E 89               [ 2] 1690 	pushw	x
       00080F CDr01rD9         [ 4] 1691 	call	_UARTPrintF
@@ -1745,7 +1745,7 @@
                                    1745 ;	se8r01-receive-car.c: 629: SE8R01_Init();
       00085C CDr06r2B         [ 4] 1746 	call	_SE8R01_Init
                                    1747 ;	se8r01-receive-car.c: 630: UARTPrintF("timer initialised = \n\r");
-      00085F AEr0Ar6F         [ 2] 1748 	ldw	x, #___str_5+0
+      00085F AEr0Ar82         [ 2] 1748 	ldw	x, #___str_5+0
       000862 89               [ 2] 1749 	pushw	x
       000863 CDr01rD9         [ 4] 1750 	call	_UARTPrintF
       000866 5B 02            [ 2] 1751 	addw	sp, #2
@@ -1790,7 +1790,7 @@
       00089D AA 02            [ 1] 1790 	or	a, #0x02
       00089F F7               [ 1] 1791 	ld	(x), a
                                    1792 ;	se8r01-receive-car.c: 668: while (1) {
-      0008A0                       1793 00110$:
+      0008A0                       1793 00113$:
                                    1794 ;	se8r01-receive-car.c: 673: delay(1000);
       0008A0 4B E8            [ 1] 1795 	push	#0xe8
       0008A2 4B 03            [ 1] 1796 	push	#0x03
@@ -1815,9 +1815,9 @@
       0008C2 AE 50 10         [ 2] 1815 	ldw	x, #0x5010
       0008C5 F6               [ 1] 1816 	ld	a, (x)
       0008C6 A5 08            [ 1] 1817 	bcp	a, #0x08
-      0008C8 27 03            [ 1] 1818 	jreq	00170$
-      0008CA CCr09rEA         [ 2] 1819 	jp	00105$
-      0008CD                       1820 00170$:
+      0008C8 27 03            [ 1] 1818 	jreq	00181$
+      0008CA CCr09rFD         [ 2] 1819 	jp	00108$
+      0008CD                       1820 00181$:
                                    1821 ;	se8r01-receive-car.c: 687: delay(240);
       0008CD 4B F0            [ 1] 1822 	push	#0xf0
       0008CF 4B 00            [ 1] 1823 	push	#0x00
@@ -1834,9 +1834,9 @@
       0008E5 5B 01            [ 2] 1834 	addw	sp, #1
       0008E7 C7u00u0D         [ 1] 1835 	ld	_status+0, a
                                    1836 ;	se8r01-receive-car.c: 691: if(status&STA_MARK_RX)                                                 // if receive data ready (TX_DS) interrupt
-      0008EA 72 06u00u0D 02   [ 2] 1837 	btjt	_status+0, #6, 00171$
+      0008EA 72 06u00u0D 02   [ 2] 1837 	btjt	_status+0, #6, 00182$
       0008EF 20 57            [ 2] 1838 	jra	00103$
-      0008F1                       1839 00171$:
+      0008F1                       1839 00182$:
                                    1840 ;	se8r01-receive-car.c: 694: pip= (status & 0b00001110)>>1;
       0008F1 C6u00u0D         [ 1] 1841 	ld	a, _status+0
       0008F4 A4 0E            [ 1] 1842 	and	a, #0x0e
@@ -1853,8 +1853,8 @@
       000905 CFu00u06         [ 2] 1853 	ldw	_pload_width_now+0, x
                                    1854 ;	se8r01-receive-car.c: 696: read_spi_buf(RD_RX_PLOAD, rx_buf,32);             // read playload to rx_buf
       000908 AEr00r1E         [ 2] 1855 	ldw	x, #_rx_buf+0
-      00090B 1F 32            [ 2] 1856 	ldw	(0x32, sp), x
-      00090D 1E 32            [ 2] 1857 	ldw	x, (0x32, sp)
+      00090B 1F 3A            [ 2] 1856 	ldw	(0x3a, sp), x
+      00090D 1E 3A            [ 2] 1857 	ldw	x, (0x3a, sp)
       00090F 4B 20            [ 1] 1858 	push	#0x20
       000911 89               [ 2] 1859 	pushw	x
       000912 4B 61            [ 1] 1860 	push	#0x61
@@ -1870,10 +1870,10 @@
       000926 72 5Fu00u08      [ 1] 1870 	clr	_newdata+0
                                    1871 ;	se8r01-receive-car.c: 700: for (teller=0;teller<32;++teller)
       00092A 5F               [ 1] 1872 	clrw	x
-      00092B                       1873 00112$:
+      00092B                       1873 00115$:
                                    1874 ;	se8r01-receive-car.c: 701: print_UCHAR_hex (rx_buf[teller]);
       00092B 90 93            [ 1] 1875 	ldw	y, x
-      00092D 72 F9 32         [ 2] 1876 	addw	y, (0x32, sp)
+      00092D 72 F9 3A         [ 2] 1876 	addw	y, (0x3a, sp)
       000930 90 F6            [ 1] 1877 	ld	a, (y)
       000932 89               [ 2] 1878 	pushw	x
       000933 88               [ 1] 1879 	push	a
@@ -1883,309 +1883,321 @@
                                    1883 ;	se8r01-receive-car.c: 700: for (teller=0;teller<32;++teller)
       000939 5C               [ 2] 1884 	incw	x
       00093A A3 00 20         [ 2] 1885 	cpw	x, #0x0020
-      00093D 2F EC            [ 1] 1886 	jrslt	00112$
+      00093D 2F EC            [ 1] 1886 	jrslt	00115$
                                    1887 ;	se8r01-receive-car.c: 702: UARTPrintF("\n\r");
-      00093F AEr0Ar86         [ 2] 1888 	ldw	x, #___str_6+0
+      00093F AEr0Ar99         [ 2] 1888 	ldw	x, #___str_6+0
       000942 89               [ 2] 1889 	pushw	x
       000943 CDr01rD9         [ 4] 1890 	call	_UARTPrintF
       000946 5B 02            [ 2] 1891 	addw	sp, #2
       000948                       1892 00103$:
-                                   1893 ;	se8r01-receive-car.c: 705: speed = (unsigned int)rx_buf[2] << 8 | (unsigned int)rx_buf[3];
+                                   1893 ;	se8r01-receive-car.c: 705: if (rx_buf[0]==0xac && rx_buf[1]==0xcc) //the first two are a code to only accept these lines
       000948 AEr00r1E         [ 2] 1894 	ldw	x, #_rx_buf+0
-      00094B 1F 38            [ 2] 1895 	ldw	(0x38, sp), x
-      00094D 1E 38            [ 2] 1896 	ldw	x, (0x38, sp)
-      00094F E6 02            [ 1] 1897 	ld	a, (0x2, x)
-      000951 5F               [ 1] 1898 	clrw	x
-      000952 97               [ 1] 1899 	ld	xl, a
-      000953 58               [ 2] 1900 	sllw	x
-      000954 58               [ 2] 1901 	sllw	x
-      000955 58               [ 2] 1902 	sllw	x
-      000956 58               [ 2] 1903 	sllw	x
-      000957 58               [ 2] 1904 	sllw	x
-      000958 58               [ 2] 1905 	sllw	x
-      000959 58               [ 2] 1906 	sllw	x
-      00095A 58               [ 2] 1907 	sllw	x
-      00095B 16 38            [ 2] 1908 	ldw	y, (0x38, sp)
-      00095D 90 E6 03         [ 1] 1909 	ld	a, (0x3, y)
-      000960 0F 3C            [ 1] 1910 	clr	(0x3c, sp)
-      000962 89               [ 2] 1911 	pushw	x
-      000963 1A 02            [ 1] 1912 	or	a, (2, sp)
-      000965 85               [ 2] 1913 	popw	x
-      000966 97               [ 1] 1914 	ld	xl, a
-      000967 9E               [ 1] 1915 	ld	a, xh
-      000968 1A 3C            [ 1] 1916 	or	a, (0x3c, sp)
-      00096A 95               [ 1] 1917 	ld	xh, a
-                                   1918 ;	se8r01-receive-car.c: 706: TIM2_CCR1H =speed*20/256; //compare capture register value for channel 1
-      00096B 89               [ 2] 1919 	pushw	x
-      00096C 4B 14            [ 1] 1920 	push	#0x14
-      00096E 4B 00            [ 1] 1921 	push	#0x00
-      000970 CDr00r00         [ 4] 1922 	call	__mulint
-      000973 5B 04            [ 2] 1923 	addw	sp, #4
-      000975 1F 3A            [ 2] 1924 	ldw	(0x3a, sp), x
-      000977 4B 00            [ 1] 1925 	push	#0x00
-      000979 4B 01            [ 1] 1926 	push	#0x01
-      00097B 1E 3C            [ 2] 1927 	ldw	x, (0x3c, sp)
-      00097D 89               [ 2] 1928 	pushw	x
-      00097E CDr00r00         [ 4] 1929 	call	__divsint
-      000981 5B 04            [ 2] 1930 	addw	sp, #4
-      000983 9F               [ 1] 1931 	ld	a, xl
-      000984 AE 53 11         [ 2] 1932 	ldw	x, #0x5311
-      000987 F7               [ 1] 1933 	ld	(x), a
-                                   1934 ;	se8r01-receive-car.c: 707: TIM2_CCR1L =speed*20%256;
-      000988 4B 00            [ 1] 1935 	push	#0x00
-      00098A 4B 01            [ 1] 1936 	push	#0x01
-      00098C 1E 3C            [ 2] 1937 	ldw	x, (0x3c, sp)
-      00098E 89               [ 2] 1938 	pushw	x
-      00098F CDr00r00         [ 4] 1939 	call	__modsint
-      000992 5B 04            [ 2] 1940 	addw	sp, #4
-      000994 9F               [ 1] 1941 	ld	a, xl
-      000995 AE 53 12         [ 2] 1942 	ldw	x, #0x5312
-      000998 F7               [ 1] 1943 	ld	(x), a
-                                   1944 ;	se8r01-receive-car.c: 710: angle = (unsigned int)rx_buf[4] << 8 | (unsigned int)rx_buf[5];
-      000999 1E 38            [ 2] 1945 	ldw	x, (0x38, sp)
-      00099B E6 04            [ 1] 1946 	ld	a, (0x4, x)
-      00099D 02               [ 1] 1947 	rlwa	x
-      00099E 4F               [ 1] 1948 	clr	a
-      00099F 01               [ 1] 1949 	rrwa	x
-      0009A0 97               [ 1] 1950 	ld	xl, a
-      0009A1 58               [ 2] 1951 	sllw	x
-      0009A2 58               [ 2] 1952 	sllw	x
-      0009A3 58               [ 2] 1953 	sllw	x
-      0009A4 58               [ 2] 1954 	sllw	x
-      0009A5 58               [ 2] 1955 	sllw	x
-      0009A6 58               [ 2] 1956 	sllw	x
-      0009A7 58               [ 2] 1957 	sllw	x
-      0009A8 58               [ 2] 1958 	sllw	x
-      0009A9 16 38            [ 2] 1959 	ldw	y, (0x38, sp)
-      0009AB 90 E6 05         [ 1] 1960 	ld	a, (0x5, y)
-      0009AE 0F 36            [ 1] 1961 	clr	(0x36, sp)
-      0009B0 89               [ 2] 1962 	pushw	x
-      0009B1 1A 02            [ 1] 1963 	or	a, (2, sp)
-      0009B3 85               [ 2] 1964 	popw	x
-      0009B4 97               [ 1] 1965 	ld	xl, a
-      0009B5 9E               [ 1] 1966 	ld	a, xh
-      0009B6 1A 36            [ 1] 1967 	or	a, (0x36, sp)
-      0009B8 95               [ 1] 1968 	ld	xh, a
-                                   1969 ;	se8r01-receive-car.c: 711: TIM2_CCR3H =(1000+angle)/256; //compare capture register value
-      0009B9 1C 03 E8         [ 2] 1970 	addw	x, #0x03e8
-      0009BC 1F 34            [ 2] 1971 	ldw	(0x34, sp), x
-      0009BE 4B 00            [ 1] 1972 	push	#0x00
-      0009C0 4B 01            [ 1] 1973 	push	#0x01
-      0009C2 1E 36            [ 2] 1974 	ldw	x, (0x36, sp)
-      0009C4 89               [ 2] 1975 	pushw	x
-      0009C5 CDr00r00         [ 4] 1976 	call	__divsint
-      0009C8 5B 04            [ 2] 1977 	addw	sp, #4
-      0009CA 9F               [ 1] 1978 	ld	a, xl
-      0009CB AE 53 15         [ 2] 1979 	ldw	x, #0x5315
-      0009CE F7               [ 1] 1980 	ld	(x), a
-                                   1981 ;	se8r01-receive-car.c: 712: TIM2_CCR3L =(1000+angle)%256;
-      0009CF 4B 00            [ 1] 1982 	push	#0x00
-      0009D1 4B 01            [ 1] 1983 	push	#0x01
-      0009D3 1E 36            [ 2] 1984 	ldw	x, (0x36, sp)
-      0009D5 89               [ 2] 1985 	pushw	x
-      0009D6 CDr00r00         [ 4] 1986 	call	__modsint
-      0009D9 5B 04            [ 2] 1987 	addw	sp, #4
-      0009DB 9F               [ 1] 1988 	ld	a, xl
-      0009DC AE 53 16         [ 2] 1989 	ldw	x, #0x5316
-      0009DF F7               [ 1] 1990 	ld	(x), a
-                                   1991 ;	se8r01-receive-car.c: 714: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
-      0009E0 3Bu00u0D         [ 1] 1992 	push	_status+0
-      0009E3 4B 27            [ 1] 1993 	push	#0x27
-      0009E5 CDr00r2E         [ 4] 1994 	call	_write_spi_reg
-      0009E8 5B 02            [ 2] 1995 	addw	sp, #2
-      0009EA                       1996 00105$:
-                                   1997 ;	se8r01-receive-car.c: 719: for (x1 = 0; x1 < 50; ++x1)
-      0009EA 5F               [ 1] 1998 	clrw	x
-      0009EB 1F 30            [ 2] 1999 	ldw	(0x30, sp), x
-      0009ED                       2000 00121$:
-      0009ED 1E 30            [ 2] 2001 	ldw	x, (0x30, sp)
-      0009EF A3 00 32         [ 2] 2002 	cpw	x, #0x0032
-      0009F2 2F 03            [ 1] 2003 	jrslt	00173$
-      0009F4 CCr08rA0         [ 2] 2004 	jp	00110$
-      0009F7                       2005 00173$:
-                                   2006 ;	se8r01-receive-car.c: 720: for (y1 = 0; y1 < 50; ++y1)
-      0009F7 5F               [ 1] 2007 	clrw	x
-      0009F8 1F 2E            [ 2] 2008 	ldw	(0x2e, sp), x
-      0009FA                       2009 00118$:
-      0009FA 1E 2E            [ 2] 2010 	ldw	x, (0x2e, sp)
-      0009FC A3 00 32         [ 2] 2011 	cpw	x, #0x0032
-      0009FF 2E 19            [ 1] 2012 	jrsge	00122$
-                                   2013 ;	se8r01-receive-car.c: 721: for (z1 = 0; z1 < 50; ++z1)
-      000A01 5F               [ 1] 2014 	clrw	x
-      000A02 1F 2C            [ 2] 2015 	ldw	(0x2c, sp), x
-      000A04                       2016 00115$:
-      000A04 1E 2C            [ 2] 2017 	ldw	x, (0x2c, sp)
-      000A06 A3 00 32         [ 2] 2018 	cpw	x, #0x0032
-      000A09 2E 08            [ 1] 2019 	jrsge	00119$
-                                   2020 ;	se8r01-receive-car.c: 722: __asm__("nop");
-      000A0B 9D               [ 1] 2021 	nop
-                                   2022 ;	se8r01-receive-car.c: 721: for (z1 = 0; z1 < 50; ++z1)
-      000A0C 1E 2C            [ 2] 2023 	ldw	x, (0x2c, sp)
-      000A0E 5C               [ 2] 2024 	incw	x
-      000A0F 1F 2C            [ 2] 2025 	ldw	(0x2c, sp), x
-      000A11 20 F1            [ 2] 2026 	jra	00115$
-      000A13                       2027 00119$:
-                                   2028 ;	se8r01-receive-car.c: 720: for (y1 = 0; y1 < 50; ++y1)
-      000A13 1E 2E            [ 2] 2029 	ldw	x, (0x2e, sp)
-      000A15 5C               [ 2] 2030 	incw	x
-      000A16 1F 2E            [ 2] 2031 	ldw	(0x2e, sp), x
-      000A18 20 E0            [ 2] 2032 	jra	00118$
-      000A1A                       2033 00122$:
-                                   2034 ;	se8r01-receive-car.c: 719: for (x1 = 0; x1 < 50; ++x1)
-      000A1A 1E 30            [ 2] 2035 	ldw	x, (0x30, sp)
-      000A1C 5C               [ 2] 2036 	incw	x
-      000A1D 1F 30            [ 2] 2037 	ldw	(0x30, sp), x
-      000A1F 20 CC            [ 2] 2038 	jra	00121$
-      000A21 5B 3D            [ 2] 2039 	addw	sp, #61
-      000A23 81               [ 4] 2040 	ret
-                                   2041 	.area CODE
-      000A24                       2042 ___str_0:
-      000A24 74 69 6D 65 72 20 69  2043 	.ascii "timer init 1 = "
+      00094B 1F 3C            [ 2] 1895 	ldw	(0x3c, sp), x
+      00094D 1E 3C            [ 2] 1896 	ldw	x, (0x3c, sp)
+      00094F F6               [ 1] 1897 	ld	a, (x)
+      000950 A1 AC            [ 1] 1898 	cp	a, #0xac
+      000952 27 03            [ 1] 1899 	jreq	00186$
+      000954 CCr09rF3         [ 2] 1900 	jp	00105$
+      000957                       1901 00186$:
+      000957 1E 3C            [ 2] 1902 	ldw	x, (0x3c, sp)
+      000959 E6 01            [ 1] 1903 	ld	a, (0x1, x)
+      00095B A1 CC            [ 1] 1904 	cp	a, #0xcc
+      00095D 27 03            [ 1] 1905 	jreq	00189$
+      00095F CCr09rF3         [ 2] 1906 	jp	00105$
+      000962                       1907 00189$:
+                                   1908 ;	se8r01-receive-car.c: 707: speed = (unsigned int)rx_buf[2] << 8 | (unsigned int)rx_buf[3];
+      000962 1E 3C            [ 2] 1909 	ldw	x, (0x3c, sp)
+      000964 E6 02            [ 1] 1910 	ld	a, (0x2, x)
+      000966 5F               [ 1] 1911 	clrw	x
+      000967 97               [ 1] 1912 	ld	xl, a
+      000968 58               [ 2] 1913 	sllw	x
+      000969 58               [ 2] 1914 	sllw	x
+      00096A 58               [ 2] 1915 	sllw	x
+      00096B 58               [ 2] 1916 	sllw	x
+      00096C 58               [ 2] 1917 	sllw	x
+      00096D 58               [ 2] 1918 	sllw	x
+      00096E 58               [ 2] 1919 	sllw	x
+      00096F 58               [ 2] 1920 	sllw	x
+      000970 16 3C            [ 2] 1921 	ldw	y, (0x3c, sp)
+      000972 90 E6 03         [ 1] 1922 	ld	a, (0x3, y)
+      000975 0F 32            [ 1] 1923 	clr	(0x32, sp)
+      000977 89               [ 2] 1924 	pushw	x
+      000978 1A 02            [ 1] 1925 	or	a, (2, sp)
+      00097A 85               [ 2] 1926 	popw	x
+      00097B 97               [ 1] 1927 	ld	xl, a
+      00097C 9E               [ 1] 1928 	ld	a, xh
+      00097D 1A 32            [ 1] 1929 	or	a, (0x32, sp)
+      00097F 95               [ 1] 1930 	ld	xh, a
+                                   1931 ;	se8r01-receive-car.c: 708: TIM2_CCR1H =speed*20/256; //compare capture register value for channel 1
+      000980 89               [ 2] 1932 	pushw	x
+      000981 4B 14            [ 1] 1933 	push	#0x14
+      000983 4B 00            [ 1] 1934 	push	#0x00
+      000985 CDr00r00         [ 4] 1935 	call	__mulint
+      000988 5B 04            [ 2] 1936 	addw	sp, #4
+      00098A 1F 38            [ 2] 1937 	ldw	(0x38, sp), x
+      00098C 4B 00            [ 1] 1938 	push	#0x00
+      00098E 4B 01            [ 1] 1939 	push	#0x01
+      000990 1E 3A            [ 2] 1940 	ldw	x, (0x3a, sp)
+      000992 89               [ 2] 1941 	pushw	x
+      000993 CDr00r00         [ 4] 1942 	call	__divsint
+      000996 5B 04            [ 2] 1943 	addw	sp, #4
+      000998 9F               [ 1] 1944 	ld	a, xl
+      000999 AE 53 11         [ 2] 1945 	ldw	x, #0x5311
+      00099C F7               [ 1] 1946 	ld	(x), a
+                                   1947 ;	se8r01-receive-car.c: 709: TIM2_CCR1L =speed*20%256;
+      00099D 4B 00            [ 1] 1948 	push	#0x00
+      00099F 4B 01            [ 1] 1949 	push	#0x01
+      0009A1 1E 3A            [ 2] 1950 	ldw	x, (0x3a, sp)
+      0009A3 89               [ 2] 1951 	pushw	x
+      0009A4 CDr00r00         [ 4] 1952 	call	__modsint
+      0009A7 5B 04            [ 2] 1953 	addw	sp, #4
+      0009A9 9F               [ 1] 1954 	ld	a, xl
+      0009AA AE 53 12         [ 2] 1955 	ldw	x, #0x5312
+      0009AD F7               [ 1] 1956 	ld	(x), a
+                                   1957 ;	se8r01-receive-car.c: 712: angle = (unsigned int)rx_buf[4] << 8 | (unsigned int)rx_buf[5];
+      0009AE 1E 3C            [ 2] 1958 	ldw	x, (0x3c, sp)
+      0009B0 E6 04            [ 1] 1959 	ld	a, (0x4, x)
+      0009B2 5F               [ 1] 1960 	clrw	x
+      0009B3 97               [ 1] 1961 	ld	xl, a
+      0009B4 58               [ 2] 1962 	sllw	x
+      0009B5 58               [ 2] 1963 	sllw	x
+      0009B6 58               [ 2] 1964 	sllw	x
+      0009B7 58               [ 2] 1965 	sllw	x
+      0009B8 58               [ 2] 1966 	sllw	x
+      0009B9 58               [ 2] 1967 	sllw	x
+      0009BA 58               [ 2] 1968 	sllw	x
+      0009BB 58               [ 2] 1969 	sllw	x
+      0009BC 16 3C            [ 2] 1970 	ldw	y, (0x3c, sp)
+      0009BE 90 E6 05         [ 1] 1971 	ld	a, (0x5, y)
+      0009C1 0F 36            [ 1] 1972 	clr	(0x36, sp)
+      0009C3 89               [ 2] 1973 	pushw	x
+      0009C4 1A 02            [ 1] 1974 	or	a, (2, sp)
+      0009C6 85               [ 2] 1975 	popw	x
+      0009C7 97               [ 1] 1976 	ld	xl, a
+      0009C8 9E               [ 1] 1977 	ld	a, xh
+      0009C9 1A 36            [ 1] 1978 	or	a, (0x36, sp)
+      0009CB 95               [ 1] 1979 	ld	xh, a
+                                   1980 ;	se8r01-receive-car.c: 713: TIM2_CCR3H =(1000+angle)/256; //compare capture register value
+      0009CC 1C 03 E8         [ 2] 1981 	addw	x, #0x03e8
+      0009CF 1F 34            [ 2] 1982 	ldw	(0x34, sp), x
+      0009D1 4B 00            [ 1] 1983 	push	#0x00
+      0009D3 4B 01            [ 1] 1984 	push	#0x01
+      0009D5 1E 36            [ 2] 1985 	ldw	x, (0x36, sp)
+      0009D7 89               [ 2] 1986 	pushw	x
+      0009D8 CDr00r00         [ 4] 1987 	call	__divsint
+      0009DB 5B 04            [ 2] 1988 	addw	sp, #4
+      0009DD 9F               [ 1] 1989 	ld	a, xl
+      0009DE AE 53 15         [ 2] 1990 	ldw	x, #0x5315
+      0009E1 F7               [ 1] 1991 	ld	(x), a
+                                   1992 ;	se8r01-receive-car.c: 714: TIM2_CCR3L =(1000+angle)%256;
+      0009E2 4B 00            [ 1] 1993 	push	#0x00
+      0009E4 4B 01            [ 1] 1994 	push	#0x01
+      0009E6 1E 36            [ 2] 1995 	ldw	x, (0x36, sp)
+      0009E8 89               [ 2] 1996 	pushw	x
+      0009E9 CDr00r00         [ 4] 1997 	call	__modsint
+      0009EC 5B 04            [ 2] 1998 	addw	sp, #4
+      0009EE 9F               [ 1] 1999 	ld	a, xl
+      0009EF AE 53 16         [ 2] 2000 	ldw	x, #0x5316
+      0009F2 F7               [ 1] 2001 	ld	(x), a
+      0009F3                       2002 00105$:
+                                   2003 ;	se8r01-receive-car.c: 716: write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
+      0009F3 3Bu00u0D         [ 1] 2004 	push	_status+0
+      0009F6 4B 27            [ 1] 2005 	push	#0x27
+      0009F8 CDr00r2E         [ 4] 2006 	call	_write_spi_reg
+      0009FB 5B 02            [ 2] 2007 	addw	sp, #2
+      0009FD                       2008 00108$:
+                                   2009 ;	se8r01-receive-car.c: 721: for (x1 = 0; x1 < 50; ++x1)
+      0009FD 5F               [ 1] 2010 	clrw	x
+      0009FE 1F 30            [ 2] 2011 	ldw	(0x30, sp), x
+      000A00                       2012 00124$:
+      000A00 1E 30            [ 2] 2013 	ldw	x, (0x30, sp)
+      000A02 A3 00 32         [ 2] 2014 	cpw	x, #0x0032
+      000A05 2F 03            [ 1] 2015 	jrslt	00190$
+      000A07 CCr08rA0         [ 2] 2016 	jp	00113$
+      000A0A                       2017 00190$:
+                                   2018 ;	se8r01-receive-car.c: 722: for (y1 = 0; y1 < 50; ++y1)
+      000A0A 5F               [ 1] 2019 	clrw	x
+      000A0B 1F 2E            [ 2] 2020 	ldw	(0x2e, sp), x
+      000A0D                       2021 00121$:
+      000A0D 1E 2E            [ 2] 2022 	ldw	x, (0x2e, sp)
+      000A0F A3 00 32         [ 2] 2023 	cpw	x, #0x0032
+      000A12 2E 19            [ 1] 2024 	jrsge	00125$
+                                   2025 ;	se8r01-receive-car.c: 723: for (z1 = 0; z1 < 50; ++z1)
+      000A14 5F               [ 1] 2026 	clrw	x
+      000A15 1F 2C            [ 2] 2027 	ldw	(0x2c, sp), x
+      000A17                       2028 00118$:
+      000A17 1E 2C            [ 2] 2029 	ldw	x, (0x2c, sp)
+      000A19 A3 00 32         [ 2] 2030 	cpw	x, #0x0032
+      000A1C 2E 08            [ 1] 2031 	jrsge	00122$
+                                   2032 ;	se8r01-receive-car.c: 724: __asm__("nop");
+      000A1E 9D               [ 1] 2033 	nop
+                                   2034 ;	se8r01-receive-car.c: 723: for (z1 = 0; z1 < 50; ++z1)
+      000A1F 1E 2C            [ 2] 2035 	ldw	x, (0x2c, sp)
+      000A21 5C               [ 2] 2036 	incw	x
+      000A22 1F 2C            [ 2] 2037 	ldw	(0x2c, sp), x
+      000A24 20 F1            [ 2] 2038 	jra	00118$
+      000A26                       2039 00122$:
+                                   2040 ;	se8r01-receive-car.c: 722: for (y1 = 0; y1 < 50; ++y1)
+      000A26 1E 2E            [ 2] 2041 	ldw	x, (0x2e, sp)
+      000A28 5C               [ 2] 2042 	incw	x
+      000A29 1F 2E            [ 2] 2043 	ldw	(0x2e, sp), x
+      000A2B 20 E0            [ 2] 2044 	jra	00121$
+      000A2D                       2045 00125$:
+                                   2046 ;	se8r01-receive-car.c: 721: for (x1 = 0; x1 < 50; ++x1)
+      000A2D 1E 30            [ 2] 2047 	ldw	x, (0x30, sp)
+      000A2F 5C               [ 2] 2048 	incw	x
+      000A30 1F 30            [ 2] 2049 	ldw	(0x30, sp), x
+      000A32 20 CC            [ 2] 2050 	jra	00124$
+      000A34 5B 3D            [ 2] 2051 	addw	sp, #61
+      000A36 81               [ 4] 2052 	ret
+                                   2053 	.area CODE
+      000A37                       2054 ___str_0:
+      000A37 74 69 6D 65 72 20 69  2055 	.ascii "timer init 1 = "
              6E 69 74 20 31 20 3D
              20
-      000A33 0A                    2044 	.db 0x0A
-      000A34 0D                    2045 	.db 0x0D
-      000A35 00                    2046 	.db 0x00
-      000A36                       2047 ___str_1:
-      000A36 74 69 6D 65 72 20 69  2048 	.ascii "timer init 2 = "
+      000A46 0A                    2056 	.db 0x0A
+      000A47 0D                    2057 	.db 0x0D
+      000A48 00                    2058 	.db 0x00
+      000A49                       2059 ___str_1:
+      000A49 74 69 6D 65 72 20 69  2060 	.ascii "timer init 2 = "
              6E 69 74 20 32 20 3D
              20
-      000A45 0A                    2049 	.db 0x0A
-      000A46 0D                    2050 	.db 0x0D
-      000A47 00                    2051 	.db 0x00
-      000A48                       2052 ___str_2:
-      000A48 73 74 61 72 74 20 64  2053 	.ascii "start debug "
+      000A58 0A                    2061 	.db 0x0A
+      000A59 0D                    2062 	.db 0x0D
+      000A5A 00                    2063 	.db 0x00
+      000A5B                       2064 ___str_2:
+      000A5B 73 74 61 72 74 20 64  2065 	.ascii "start debug "
              65 62 75 67 20
-      000A54 0A                    2054 	.db 0x0A
-      000A55 0D                    2055 	.db 0x0D
-      000A56 00                    2056 	.db 0x00
-      000A57                       2057 ___str_3:
-      000A57 63 6F 6E 66 69 67 20  2058 	.ascii "config = "
+      000A67 0A                    2066 	.db 0x0A
+      000A68 0D                    2067 	.db 0x0D
+      000A69 00                    2068 	.db 0x00
+      000A6A                       2069 ___str_3:
+      000A6A 63 6F 6E 66 69 67 20  2070 	.ascii "config = "
              3D 20
-      000A60 0A                    2059 	.db 0x0A
-      000A61 0D                    2060 	.db 0x0D
-      000A62 00                    2061 	.db 0x00
-      000A63                       2062 ___str_4:
-      000A63 73 74 61 74 75 73 20  2063 	.ascii "status = "
+      000A73 0A                    2071 	.db 0x0A
+      000A74 0D                    2072 	.db 0x0D
+      000A75 00                    2073 	.db 0x00
+      000A76                       2074 ___str_4:
+      000A76 73 74 61 74 75 73 20  2075 	.ascii "status = "
              3D 20
-      000A6C 0A                    2064 	.db 0x0A
-      000A6D 0D                    2065 	.db 0x0D
-      000A6E 00                    2066 	.db 0x00
-      000A6F                       2067 ___str_5:
-      000A6F 74 69 6D 65 72 20 69  2068 	.ascii "timer initialised = "
+      000A7F 0A                    2076 	.db 0x0A
+      000A80 0D                    2077 	.db 0x0D
+      000A81 00                    2078 	.db 0x00
+      000A82                       2079 ___str_5:
+      000A82 74 69 6D 65 72 20 69  2080 	.ascii "timer initialised = "
              6E 69 74 69 61 6C 69
              73 65 64 20 3D 20
-      000A83 0A                    2069 	.db 0x0A
-      000A84 0D                    2070 	.db 0x0D
-      000A85 00                    2071 	.db 0x00
-      000A86                       2072 ___str_6:
-      000A86 0A                    2073 	.db 0x0A
-      000A87 0D                    2074 	.db 0x0D
-      000A88 00                    2075 	.db 0x00
-                                   2076 	.area INITIALIZER
-      000000                       2077 __xinit__SE8R01_DR_2M:
-      000000 00 00                 2078 	.dw #0x0000
-      000002                       2079 __xinit__SE8R01_DR_1M:
-      000002 00 00                 2080 	.dw #0x0000
-      000004                       2081 __xinit__SE8R01_DR_500K:
-      000004 00 01                 2082 	.dw #0x0001
-      000006                       2083 __xinit__pload_width_now:
-      000006 00 00                 2084 	.dw #0x0000
-      000008                       2085 __xinit__newdata:
-      000008 00 00                 2086 	.dw #0x0000
-      00000A                       2087 __xinit__signal_lv:
-      00000A 00                    2088 	.db #0x00	;  0
-      00000B                       2089 __xinit__pip:
-      00000B 00 00                 2090 	.dw #0x0000
-      00000D                       2091 __xinit__status:
-      00000D 00                    2092 	.db #0x00	; 0
-      00000E                       2093 __xinit__TX_ADDRESS:
-      00000E B3                    2094 	.db #0xB3	; 179
-      00000F 43                    2095 	.db #0x43	; 67	'C'
-      000010 10                    2096 	.db #0x10	; 16
-      000011 10                    2097 	.db #0x10	; 16
-      000012                       2098 __xinit__ADDRESS2:
-      000012 B1                    2099 	.db #0xB1	; 177
-      000013                       2100 __xinit__ADDRESS3:
-      000013 B2                    2101 	.db #0xB2	; 178
-      000014                       2102 __xinit__ADDRESS4:
-      000014 B3                    2103 	.db #0xB3	; 179
-      000015                       2104 __xinit__ADDRESS5:
-      000015 B4                    2105 	.db #0xB4	; 180
-      000016                       2106 __xinit__ADDRESS1:
-      000016 B0                    2107 	.db #0xB0	; 176
-      000017 43                    2108 	.db #0x43	; 67	'C'
-      000018 10                    2109 	.db #0x10	; 16
-      000019 10                    2110 	.db #0x10	; 16
-      00001A                       2111 __xinit__ADDRESS0:
-      00001A 34                    2112 	.db #0x34	; 52	'4'
-      00001B 43                    2113 	.db #0x43	; 67	'C'
-      00001C 10                    2114 	.db #0x10	; 16
-      00001D 10                    2115 	.db #0x10	; 16
-      00001E                       2116 __xinit__rx_buf:
-      00001E 00                    2117 	.db #0x00	; 0
-      00001F 00                    2118 	.db 0x00
-      000020 00                    2119 	.db 0x00
-      000021 00                    2120 	.db 0x00
-      000022 00                    2121 	.db 0x00
-      000023 00                    2122 	.db 0x00
-      000024 00                    2123 	.db 0x00
-      000025 00                    2124 	.db 0x00
-      000026 00                    2125 	.db 0x00
-      000027 00                    2126 	.db 0x00
-      000028 00                    2127 	.db 0x00
-      000029 00                    2128 	.db 0x00
-      00002A 00                    2129 	.db 0x00
-      00002B 00                    2130 	.db 0x00
-      00002C 00                    2131 	.db 0x00
-      00002D 00                    2132 	.db 0x00
-      00002E 00                    2133 	.db 0x00
-      00002F 00                    2134 	.db 0x00
-      000030 00                    2135 	.db 0x00
-      000031 00                    2136 	.db 0x00
-      000032 00                    2137 	.db 0x00
-      000033 00                    2138 	.db 0x00
-      000034 00                    2139 	.db 0x00
-      000035 00                    2140 	.db 0x00
-      000036 00                    2141 	.db 0x00
-      000037 00                    2142 	.db 0x00
-      000038 00                    2143 	.db 0x00
-      000039 00                    2144 	.db 0x00
-      00003A 00                    2145 	.db 0x00
-      00003B 00                    2146 	.db 0x00
-      00003C 00                    2147 	.db 0x00
-      00003D 00                    2148 	.db 0x00
-      00003E                       2149 __xinit__tx_buf:
-      00003E 00                    2150 	.db #0x00	; 0
-      00003F 00                    2151 	.db 0x00
-      000040 00                    2152 	.db 0x00
-      000041 00                    2153 	.db 0x00
-      000042 00                    2154 	.db 0x00
-      000043 00                    2155 	.db 0x00
-      000044 00                    2156 	.db 0x00
-      000045 00                    2157 	.db 0x00
-      000046 00                    2158 	.db 0x00
-      000047 00                    2159 	.db 0x00
-      000048 00                    2160 	.db 0x00
-      000049 00                    2161 	.db 0x00
-      00004A 00                    2162 	.db 0x00
-      00004B 00                    2163 	.db 0x00
-      00004C 00                    2164 	.db 0x00
-      00004D 00                    2165 	.db 0x00
-      00004E 00                    2166 	.db 0x00
-      00004F 00                    2167 	.db 0x00
-      000050 00                    2168 	.db 0x00
-      000051 00                    2169 	.db 0x00
-      000052 00                    2170 	.db 0x00
-      000053 00                    2171 	.db 0x00
-      000054 00                    2172 	.db 0x00
-      000055 00                    2173 	.db 0x00
-      000056 00                    2174 	.db 0x00
-      000057 00                    2175 	.db 0x00
-      000058 00                    2176 	.db 0x00
-      000059 00                    2177 	.db 0x00
-      00005A 00                    2178 	.db 0x00
-      00005B 00                    2179 	.db 0x00
-      00005C 00                    2180 	.db 0x00
-      00005D 00                    2181 	.db 0x00
-                                   2182 	.area CABS (ABS)
+      000A96 0A                    2081 	.db 0x0A
+      000A97 0D                    2082 	.db 0x0D
+      000A98 00                    2083 	.db 0x00
+      000A99                       2084 ___str_6:
+      000A99 0A                    2085 	.db 0x0A
+      000A9A 0D                    2086 	.db 0x0D
+      000A9B 00                    2087 	.db 0x00
+                                   2088 	.area INITIALIZER
+      000000                       2089 __xinit__SE8R01_DR_2M:
+      000000 00 00                 2090 	.dw #0x0000
+      000002                       2091 __xinit__SE8R01_DR_1M:
+      000002 00 00                 2092 	.dw #0x0000
+      000004                       2093 __xinit__SE8R01_DR_500K:
+      000004 00 01                 2094 	.dw #0x0001
+      000006                       2095 __xinit__pload_width_now:
+      000006 00 00                 2096 	.dw #0x0000
+      000008                       2097 __xinit__newdata:
+      000008 00 00                 2098 	.dw #0x0000
+      00000A                       2099 __xinit__signal_lv:
+      00000A 00                    2100 	.db #0x00	;  0
+      00000B                       2101 __xinit__pip:
+      00000B 00 00                 2102 	.dw #0x0000
+      00000D                       2103 __xinit__status:
+      00000D 00                    2104 	.db #0x00	; 0
+      00000E                       2105 __xinit__TX_ADDRESS:
+      00000E B3                    2106 	.db #0xB3	; 179
+      00000F 43                    2107 	.db #0x43	; 67	'C'
+      000010 10                    2108 	.db #0x10	; 16
+      000011 10                    2109 	.db #0x10	; 16
+      000012                       2110 __xinit__ADDRESS2:
+      000012 B1                    2111 	.db #0xB1	; 177
+      000013                       2112 __xinit__ADDRESS3:
+      000013 B2                    2113 	.db #0xB2	; 178
+      000014                       2114 __xinit__ADDRESS4:
+      000014 B3                    2115 	.db #0xB3	; 179
+      000015                       2116 __xinit__ADDRESS5:
+      000015 B4                    2117 	.db #0xB4	; 180
+      000016                       2118 __xinit__ADDRESS1:
+      000016 B0                    2119 	.db #0xB0	; 176
+      000017 43                    2120 	.db #0x43	; 67	'C'
+      000018 10                    2121 	.db #0x10	; 16
+      000019 10                    2122 	.db #0x10	; 16
+      00001A                       2123 __xinit__ADDRESS0:
+      00001A 34                    2124 	.db #0x34	; 52	'4'
+      00001B 43                    2125 	.db #0x43	; 67	'C'
+      00001C 10                    2126 	.db #0x10	; 16
+      00001D 10                    2127 	.db #0x10	; 16
+      00001E                       2128 __xinit__rx_buf:
+      00001E 00                    2129 	.db #0x00	; 0
+      00001F 00                    2130 	.db 0x00
+      000020 00                    2131 	.db 0x00
+      000021 00                    2132 	.db 0x00
+      000022 00                    2133 	.db 0x00
+      000023 00                    2134 	.db 0x00
+      000024 00                    2135 	.db 0x00
+      000025 00                    2136 	.db 0x00
+      000026 00                    2137 	.db 0x00
+      000027 00                    2138 	.db 0x00
+      000028 00                    2139 	.db 0x00
+      000029 00                    2140 	.db 0x00
+      00002A 00                    2141 	.db 0x00
+      00002B 00                    2142 	.db 0x00
+      00002C 00                    2143 	.db 0x00
+      00002D 00                    2144 	.db 0x00
+      00002E 00                    2145 	.db 0x00
+      00002F 00                    2146 	.db 0x00
+      000030 00                    2147 	.db 0x00
+      000031 00                    2148 	.db 0x00
+      000032 00                    2149 	.db 0x00
+      000033 00                    2150 	.db 0x00
+      000034 00                    2151 	.db 0x00
+      000035 00                    2152 	.db 0x00
+      000036 00                    2153 	.db 0x00
+      000037 00                    2154 	.db 0x00
+      000038 00                    2155 	.db 0x00
+      000039 00                    2156 	.db 0x00
+      00003A 00                    2157 	.db 0x00
+      00003B 00                    2158 	.db 0x00
+      00003C 00                    2159 	.db 0x00
+      00003D 00                    2160 	.db 0x00
+      00003E                       2161 __xinit__tx_buf:
+      00003E 00                    2162 	.db #0x00	; 0
+      00003F 00                    2163 	.db 0x00
+      000040 00                    2164 	.db 0x00
+      000041 00                    2165 	.db 0x00
+      000042 00                    2166 	.db 0x00
+      000043 00                    2167 	.db 0x00
+      000044 00                    2168 	.db 0x00
+      000045 00                    2169 	.db 0x00
+      000046 00                    2170 	.db 0x00
+      000047 00                    2171 	.db 0x00
+      000048 00                    2172 	.db 0x00
+      000049 00                    2173 	.db 0x00
+      00004A 00                    2174 	.db 0x00
+      00004B 00                    2175 	.db 0x00
+      00004C 00                    2176 	.db 0x00
+      00004D 00                    2177 	.db 0x00
+      00004E 00                    2178 	.db 0x00
+      00004F 00                    2179 	.db 0x00
+      000050 00                    2180 	.db 0x00
+      000051 00                    2181 	.db 0x00
+      000052 00                    2182 	.db 0x00
+      000053 00                    2183 	.db 0x00
+      000054 00                    2184 	.db 0x00
+      000055 00                    2185 	.db 0x00
+      000056 00                    2186 	.db 0x00
+      000057 00                    2187 	.db 0x00
+      000058 00                    2188 	.db 0x00
+      000059 00                    2189 	.db 0x00
+      00005A 00                    2190 	.db 0x00
+      00005B 00                    2191 	.db 0x00
+      00005C 00                    2192 	.db 0x00
+      00005D 00                    2193 	.db 0x00
+                                   2194 	.area CABS (ABS)

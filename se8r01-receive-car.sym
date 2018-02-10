@@ -25,13 +25,13 @@ Symbol Table
   8 _SE8R01_Init                                                   00062B GR
   2 _TX_ADDRESS                                                    00000E GR
   8 _UARTPrintF                                                    0001D9 GR
-  8 ___str_0                                                       000A24 R
-  8 ___str_1                                                       000A36 R
-  8 ___str_2                                                       000A48 R
-  8 ___str_3                                                       000A57 R
-  8 ___str_4                                                       000A63 R
-  8 ___str_5                                                       000A6F R
-  8 ___str_6                                                       000A86 R
+  8 ___str_0                                                       000A37 R
+  8 ___str_1                                                       000A49 R
+  8 ___str_2                                                       000A5B R
+  8 ___str_3                                                       000A6A R
+  8 ___str_4                                                       000A76 R
+  8 ___str_5                                                       000A82 R
+  8 ___str_6                                                       000A99 R
     __divsint                                                      ****** GX
   5 __interrupt_vect                                               000000 R
     __modsint                                                      ****** GX
@@ -105,7 +105,7 @@ Area Table
    5 HOME                                       size     83   flags    0
    6 GSINIT                                     size     1A   flags    0
    7 GSFINAL                                    size      3   flags    0
-   8 CODE                                       size    A89   flags    0
+   8 CODE                                       size    A9C   flags    0
    9 INITIALIZER                                size     5E   flags    0
    A CABS                                       size      0   flags    8
 
