@@ -44,12 +44,12 @@ CABS                                00000000    00000000 =           0. bytes (A
      00000083  l_HOME                          
      00000100  l_IRAM                          
      00000100  l_SSEG                          
-     00000A87  l_CODE                          
+     00000B91  l_CODE                          
      00008000  s_HOME                          
      00008083  s_GSINIT                        
      0000809D  s_GSFINAL                       
      000080A0  s_CODE                          
-     00008B27  s_INITIALIZER                   
+     00008C31  s_INITIALIZER                   
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
@@ -60,7 +60,7 @@ Area                                    Addr        Size        Decimal Bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00000000  .__.ABS.                           _memset
+     00000000  .__.ABS.                           _divsint
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
@@ -151,7 +151,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                000080A0    00000A87 =        2695. bytes (REL,CON)
+CODE                                000080A0    00000B91 =        2961. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -168,20 +168,23 @@ CODE                                000080A0    00000A87 =        2695. bytes (R
      00008290  _print_UCHAR_hex                   se8r01_receive_car
      000082DE  _InitializeUART                    se8r01_receive_car
      00008357  _init_io                           se8r01_receive_car
-     0000837B  _rf_switch_bank                    se8r01_receive_car
-     00008398  _SE8R01_Calibration                se8r01_receive_car
-     00008564  _SE8R01_Analog_Init                se8r01_receive_car
-     000086E0  _SE8R01_Init                       se8r01_receive_car
-     000087C6  _Init_Tim2                         se8r01_receive_car
-     00008834  _main                              se8r01_receive_car
-     00008AB2  __mulint                           _mulint
-     00008B08  _memset                            _memset
+     00008366  _rf_switch_bank                    se8r01_receive_car
+     00008383  _SE8R01_Calibration                se8r01_receive_car
+     0000854F  _SE8R01_Analog_Init                se8r01_receive_car
+     000086CB  _SE8R01_Init                       se8r01_receive_car
+     000087B1  _Init_Tim2                         se8r01_receive_car
+     0000881C  _main                              se8r01_receive_car
+     00008B29  __mulint                           _mulint
+     00008B7F  _memset                            _memset
+     00008B9E  __modsint                          _modsint
+     00008BDC  __divsint                          _divsint
+
 ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-INITIALIZER                         00008B27    0000005E =          94. bytes (REL,CON)
+INITIALIZER                         00008C31    0000005E =          94. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -196,6 +199,8 @@ Libraries Linked                          [ object file ]
 
 /usr/bin/../share/sdcc/lib/stm8/stm8.lib  [ _mulint.rel ]
 /usr/bin/../share/sdcc/lib/stm8/stm8.lib  [ _memset.rel ]
+/usr/bin/../share/sdcc/lib/stm8/stm8.lib  [ _modsint.rel ]
+/usr/bin/../share/sdcc/lib/stm8/stm8.lib  [ _divsint.rel ]
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
 

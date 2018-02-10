@@ -13,26 +13,28 @@ Symbol Table
   2 _ADDRESS3                                                      000013 GR
   2 _ADDRESS4                                                      000014 GR
   2 _ADDRESS5                                                      000015 GR
-  8 _Init_Tim2                                                     000726 GR
+  8 _Init_Tim2                                                     000711 GR
   8 _InitializeSPI                                                 00011C GR
   8 _InitializeSystemClock                                         000144 GR
   8 _InitializeUART                                                00023E GR
-  8 _SE8R01_Analog_Init                                            0004C4 GR
-  8 _SE8R01_Calibration                                            0002F8 GR
+  8 _SE8R01_Analog_Init                                            0004AF GR
+  8 _SE8R01_Calibration                                            0002E3 GR
   2 _SE8R01_DR_1M                                                  000002 GR
   2 _SE8R01_DR_2M                                                  000000 GR
   2 _SE8R01_DR_500K                                                000004 GR
-  8 _SE8R01_Init                                                   000640 GR
+  8 _SE8R01_Init                                                   00062B GR
   2 _TX_ADDRESS                                                    00000E GR
   8 _UARTPrintF                                                    0001D9 GR
-  8 ___str_0                                                       0009AD R
-  8 ___str_1                                                       0009BF R
-  8 ___str_2                                                       0009D1 R
-  8 ___str_3                                                       0009E0 R
-  8 ___str_4                                                       0009EC R
-  8 ___str_5                                                       0009F8 R
-  8 ___str_6                                                       000A0F R
+  8 ___str_0                                                       000A24 R
+  8 ___str_1                                                       000A36 R
+  8 ___str_2                                                       000A48 R
+  8 ___str_3                                                       000A57 R
+  8 ___str_4                                                       000A63 R
+  8 ___str_5                                                       000A6F R
+  8 ___str_6                                                       000A86 R
+    __divsint                                                      ****** GX
   5 __interrupt_vect                                               000000 R
+    __modsint                                                      ****** GX
     __mulint                                                       ****** GX
   6 __sdcc_gs_init_startup                                         000000 R
   6 __sdcc_init_data                                               000000 R
@@ -56,15 +58,15 @@ Symbol Table
   9 __xinit__status                                                00000D R
   9 __xinit__tx_buf                                                00003E R
   8 _delay                                                         00018E GR
-  8 _delayTenMicro                                                 000000 GR
-  1 _gtemp                                                         000000 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
 Hexadecimal [24-Bits]
 
 Symbol Table
 
+  8 _delayTenMicro                                                 000000 GR
+  1 _gtemp                                                         000000 GR
   8 _init_io                                                       0002B7 GR
-  8 _main                                                          000794 GR
+  8 _main                                                          00077C GR
     _memset                                                        ****** GX
   1 _myData_pip4                                                   00000A GR
   1 _myData_pip5                                                   000005 GR
@@ -74,7 +76,7 @@ Symbol Table
   8 _print_UCHAR_hex                                               0001F0 GR
   8 _read_spi_buf                                                  0000E0 GR
   8 _read_spi_reg                                                  00006A GR
-  8 _rf_switch_bank                                                0002DB GR
+  8 _rf_switch_bank                                                0002C6 GR
   2 _rx_buf                                                        00001E GR
   2 _signal_lv                                                     00000A GR
   2 _status                                                        00000D GR
@@ -103,7 +105,7 @@ Area Table
    5 HOME                                       size     83   flags    0
    6 GSINIT                                     size     1A   flags    0
    7 GSFINAL                                    size      3   flags    0
-   8 CODE                                       size    A12   flags    0
+   8 CODE                                       size    A89   flags    0
    9 INITIALIZER                                size     5E   flags    0
    A CABS                                       size      0   flags    8
 

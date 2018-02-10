@@ -271,9 +271,9 @@ struct dataStruct1{
 //**************************************************
 void init_io(void)
 { //PD3 is interrupt
-	PD_DDR &= ~(1 << 3); // input mode
-	PD_CR1 |= (1 << 3); // input with pull up 
-	PD_CR2 |= (1 << 3); // interrupt enabled 
+//	PD_DDR &= ~(1 << 3); // input mode
+//	PD_CR1 |= (1 << 3); // input with pull up 
+//	PD_CR2 |= (1 << 3); // interrupt enabled 
 	//	PD_ODR &= ~(1 << 3);
 	//  digitalWrite(IRQq, 0);
 	//PC_ODR |= (1 << CE);
@@ -560,10 +560,10 @@ AFR1 Alternate function remapping option 1
 
 	// init PD4 Timer2 Channel for PWM : connector J4
 	// this is for the electro motor control
-
-	TIM2_CCMR1 |=0X70;//Set the timer 2 / channel 1 output
-	TIM2_CCMR1 |=0X04;//Comparison of 3 pre load / / output enable
-	TIM2_CCER1 |=0x03;//  Channel 1 enable, active low output configuration
+	TIM2_CCER1 =0x03;//  Channel 1 enable, active low output configuration
+TIM2_CCMR2 = 0x03;
+	TIM2_CCMR1 =0X70;//Set the timer 2 / channel 1 output
+//	TIM2_CCMR1 |=0X04;//Comparison of 3 pre load / / output enable
 
 
 	//should be 50 duty cycle 
@@ -587,7 +587,7 @@ int main () {
 	UCHAR tx_addr[]     = { 0xe1, 0xf0, 0xf0, 0xf0, 0xf0 };
 	UCHAR tx_payload[33];
 	UCHAR readstatus;
-	int teller;
+	int teller, speed,angle ;
 	volatile int x1, y1, z1;
 	InitializeSystemClock();
 	InitializeUART();
@@ -612,7 +612,7 @@ int main () {
 
 	PD_DDR |= (1 << 2) ; // output mode
 	PD_CR1 |= (1 << 2) ; // push-pull
-	PD_ODR &= ~(1 << 2);
+	PD_ODR |= (1 << 2);
 
 	//pwm on pin PD4 -  left J4 connector TIM2_CH1
 
@@ -678,7 +678,7 @@ int main () {
 		PD_ODR &= ~(1 << 2); //blink LED
 		delay(500);
 
-		PD_ODR |= 1 << 2; //blink LED
+//		PD_ODR |= 1 << 2; //blink LED
 		delay(500);
 				if ((PD_IDR & (1 << 3))==0) //input low
 
@@ -701,6 +701,15 @@ int main () {
 		print_UCHAR_hex (rx_buf[teller]);
 		UARTPrintF("\n\r");
 		}
+//adapt pwm motor according to joystick
+speed = (unsigned int)rx_buf[2] << 8 | (unsigned int)rx_buf[3];
+	TIM2_CCR1H =speed*20/256; //compare capture register value for channel 1
+	TIM2_CCR1L =speed*20%256;
+//	TIM2_CCR1H =12000/256; //compare capture register value for channel 1
+//	TIM2_CCR1L =12000%256;
+angle = (unsigned int)rx_buf[4] << 8 | (unsigned int)rx_buf[5];
+	TIM2_CCR3H =(1000+angle)/256; //compare capture register value
+	TIM2_CCR3L =(1000+angle)%256;
 
 		write_spi_reg(WRITE_REG+STATUS,status);       // clear RX_DR or TX_DS or MAX_RT interrupt flag
 
