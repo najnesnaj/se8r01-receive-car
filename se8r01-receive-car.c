@@ -665,7 +665,7 @@ int main () {
 
 	// PB4 is connected to PWMA  it is high for full power  (connector J3)
 
-	//	PB_ODR |= 1 << 4; //only if pwm does not work jj
+		PB_ODR |= 1 << 4; //only if pwm does not work jj
 
 	// PB5 is connected to STBY  it is high to activate motor
 
@@ -713,18 +713,26 @@ int main () {
 			if (rx_buf[0]==0xac && rx_buf[1]==0xcc) //the first two are a code to only accept these lines in the transmitted lines to avoid errors
 			{
 				speed = (unsigned int)rx_buf[2] << 8 | (unsigned int)rx_buf[3];
+				if ((speed <= 0x0210) && (speed >= 0x0190)) {
+					PA_ODR &= ~(1 << 2);
+					PA_ODR &= ~(1 << 1);
+					TIM2_CCR1H = 0; //compare capture register value for channel 1
+					TIM2_CCR1L = 0;
+				
+				
+				}
 
-				if (speed > 0x0205) { //forward
+				if (speed > 0x0210) { //forward
 					PA_ODR &= ~(1 << 2);
 					PA_ODR |= 1 << 1;
-					TIM2_CCR1H =speed*20/256; //compare capture register value for channel 1
-					TIM2_CCR1L =speed*20%256;
+					TIM2_CCR1H =(speed-500)*40/256; //compare capture register value for channel 1
+					TIM2_CCR1L =(speed-500)*40%256;
 				}
-				if (speed < 0x0200) { //reverse
+				if (speed < 0x0190) { //reverse
 					PA_ODR &= ~(1 << 1);
 					PA_ODR |= 1 << 2;
-					TIM2_CCR1H =(0x03ff-speed)*20/256; //compare capture register value for channel 1
-					TIM2_CCR1L =(0x03dd-speed)*20%256;
+					TIM2_CCR1H =(500-speed)*40/256; //compare capture register value for channel 1
+					TIM2_CCR1L =(500-speed)*40%256;
 				}
 
 				angle = (unsigned int)rx_buf[4] << 8 | (unsigned int)rx_buf[5]; //angle of servo motor

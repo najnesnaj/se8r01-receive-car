@@ -13,25 +13,25 @@ Symbol Table
   2 _ADDRESS3                                                      000013 GR
   2 _ADDRESS4                                                      000014 GR
   2 _ADDRESS5                                                      000015 GR
-  8 _Init_Tim2                                                     000711 GR
+  8 _Init_Tim2                                                     00070F GR
   8 _InitializeSPI                                                 00011C GR
   8 _InitializeSystemClock                                         000144 GR
-  8 _InitializeUART                                                00023E GR
-  8 _SE8R01_Analog_Init                                            0004AF GR
-  8 _SE8R01_Calibration                                            0002E3 GR
+  8 _InitializeUART                                                00023C GR
+  8 _SE8R01_Analog_Init                                            0004AD GR
+  8 _SE8R01_Calibration                                            0002E1 GR
   2 _SE8R01_DR_1M                                                  000002 GR
   2 _SE8R01_DR_2M                                                  000000 GR
   2 _SE8R01_DR_500K                                                000004 GR
-  8 _SE8R01_Init                                                   00062B GR
+  8 _SE8R01_Init                                                   000629 GR
   2 _TX_ADDRESS                                                    00000E GR
   8 _UARTPrintF                                                    0001D9 GR
-  8 ___str_0                                                       000A37 R
-  8 ___str_1                                                       000A49 R
-  8 ___str_2                                                       000A5B R
-  8 ___str_3                                                       000A6A R
-  8 ___str_4                                                       000A76 R
-  8 ___str_5                                                       000A82 R
-  8 ___str_6                                                       000A99 R
+  8 ___str_0                                                       000AD7 R
+  8 ___str_1                                                       000AE9 R
+  8 ___str_2                                                       000AFB R
+  8 ___str_3                                                       000B0A R
+  8 ___str_4                                                       000B16 R
+  8 ___str_5                                                       000B22 R
+  8 ___str_6                                                       000B39 R
     __divsint                                                      ****** GX
   5 __interrupt_vect                                               000000 R
     __modsint                                                      ****** GX
@@ -65,8 +65,8 @@ Symbol Table
 
   8 _delayTenMicro                                                 000000 GR
   1 _gtemp                                                         000000 GR
-  8 _init_io                                                       0002B7 GR
-  8 _main                                                          00077C GR
+  8 _init_io                                                       0002B5 GR
+  8 _main                                                          00077A GR
     _memset                                                        ****** GX
   1 _myData_pip4                                                   00000A GR
   1 _myData_pip5                                                   000005 GR
@@ -76,7 +76,7 @@ Symbol Table
   8 _print_UCHAR_hex                                               0001F0 GR
   8 _read_spi_buf                                                  0000E0 GR
   8 _read_spi_reg                                                  00006A GR
-  8 _rf_switch_bank                                                0002C6 GR
+  8 _rf_switch_bank                                                0002C4 GR
   2 _rx_buf                                                        00001E GR
   2 _signal_lv                                                     00000A GR
   2 _status                                                        00000D GR
@@ -105,7 +105,7 @@ Area Table
    5 HOME                                       size     83   flags    0
    6 GSINIT                                     size     1A   flags    0
    7 GSFINAL                                    size      3   flags    0
-   8 CODE                                       size    A9C   flags    0
+   8 CODE                                       size    B3C   flags    0
    9 INITIALIZER                                size     5E   flags    0
    A CABS                                       size      0   flags    8
 
